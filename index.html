@@ -1,1069 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site Review Findings — georgianagogolan.com</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Review — georgianagogolan.com</title>
   <style>
     :root {
-      --clr-bg:         #0e0e0e;
-      --clr-surface:    #161616;
-      --clr-border:     #2a2a2a;
-      --clr-accent:     #c8f55a;
-      --clr-accent-dim: #9dc43f;
-      --clr-text:       #e8e4dc;
-      --clr-muted:      #888;
-      --clr-p0:         #ff5a5a;
-      --clr-p1:         #f5a623;
-      --clr-p2:         #4dacf5;
-      --clr-p3:         #888;
-      --clr-ok:         #5bf5a2;
-      --clr-warn:       #f5d45b;
-      --clr-fail:       #ff5a5a;
-      --font-serif:     'Playfair Display', Georgia, serif;
-      --font-sans:      'DM Sans', system-ui, sans-serif;
-      --max-w:          820px;
-      --radius:         8px;
+      --bg: #0f0f0f;
+      --bg-card: #1a1a1a;
+      --cream: #F0EBE3;
+      --cream-mid: rgba(240,235,227,0.65);
+      --accent: #BFFF00;
+      --accent-dim: rgba(191,255,0,0.12);
+      --red: #e74c3c;
+      --orange: #f39c12;
+      --green: #27ae60;
+      --line: rgba(240,235,227,0.08);
+      --font: 'DM Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      background: var(--clr-bg);
-      color: var(--clr-text);
-      font-family: var(--font-sans);
-      font-size: clamp(15px, 1.8vw, 17px);
-      line-height: 1.75;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.7;
+      padding: 0;
     }
+    ::selection { background: rgba(191,255,0,0.2); color: var(--cream); }
 
-    /* ── HEADER ─────────────────────────────────────────────── */
-    .site-header {
-      background: var(--clr-surface);
-      border-bottom: 1px solid var(--clr-border);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .site-header .logo-text {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      color: var(--clr-text);
-      text-decoration: none;
-      letter-spacing: .04em;
-    }
-    .site-header .badge {
-      background: var(--clr-border);
-      color: var(--clr-muted);
-      font-size: .72rem;
-      font-weight: 500;
-      padding: .2em .6em;
-      border-radius: 40px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
+    /* Layout */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+    header { padding: 4rem 0 2rem; border-bottom: 1px solid var(--line); }
+    header h1 { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; margin-bottom: 0.5rem; }
+    header h1 span { color: var(--accent); }
+    .meta { font-size: 0.82rem; color: var(--cream-mid); display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .meta strong { color: var(--cream); font-weight: 600; }
 
-    /* ── HERO ───────────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, #141414 0%, #1a1f12 100%);
-      border-bottom: 1px solid var(--clr-border);
-      padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2.5rem, 6vw, 4rem);
-      text-align: center;
-    }
-    .hero-eyebrow {
-      font-size: .75rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--clr-accent);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-    .hero h1 span { color: var(--clr-accent); }
-    .hero-sub {
-      color: var(--clr-muted);
-      font-size: .95rem;
-      max-width: 520px;
-      margin: 0 auto 2rem;
-    }
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      font-size: .8rem;
-      color: var(--clr-muted);
-    }
-    .hero-meta strong { color: var(--clr-text); }
+    /* Sections */
+    section { padding: 3rem 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+    h2 { font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 400; margin-bottom: 1.5rem; }
+    h2 .emoji { margin-right: 0.4em; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--cream); }
+    p { color: var(--cream-mid); margin-bottom: 1rem; max-width: 72ch; }
 
-    /* ── VERDICT BAND ───────────────────────────────────────── */
-    .verdict-band {
-      background: #1b1f14;
-      border-top: 1px solid var(--clr-border);
-      border-bottom: 1px solid var(--clr-border);
-      padding: 2.5rem 2rem;
-    }
-    .verdict-band .inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-    .verdict-band h2 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      color: var(--clr-accent);
-      margin-bottom: 1rem;
-    }
-    .verdict-band p { color: var(--clr-text); }
-    .blocker-list {
-      list-style: none;
-      margin-top: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-    }
-    .blocker-list li {
-      display: flex;
-      gap: .75rem;
-      align-items: flex-start;
-      background: #13180d;
-      border: 1px solid #2a3318;
-      border-radius: var(--radius);
-      padding: .7rem 1rem;
-      font-size: .9rem;
-    }
-    .blocker-list li .num {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 1.5rem;
-      background: var(--clr-accent);
-      color: #0e0e0e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: .7rem;
-      font-weight: 700;
-      margin-top: .1rem;
-    }
-
-    /* ── PILLARS GRID ───────────────────────────────────────── */
-    .pillars {
-      background: var(--clr-bg);
-      padding: 3rem 2rem;
-    }
-    .pillars .inner { max-width: var(--max-w); margin: 0 auto; }
-    .pillars h2 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .pillar-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .pillar-card {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-    }
-    .pillar-card .icon { font-size: 1.4rem; margin-bottom: .5rem; }
-    .pillar-card h3 { font-size: .85rem; font-weight: 600; color: var(--clr-accent); letter-spacing: .04em; margin-bottom: .35rem; }
-    .pillar-card p { font-size: .8rem; color: var(--clr-muted); }
-
-    /* ── WRAP ───────────────────────────────────────────────── */
-    .content-wrap {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 2rem 4rem;
-    }
-
-    /* ── SECTION HEADINGS ───────────────────────────────────── */
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: #fff;
-      margin: 3.5rem 0 1.5rem;
-      padding-bottom: .6rem;
-      border-bottom: 1px solid var(--clr-border);
-    }
-
-    /* ── FINDING CARD ───────────────────────────────────────── */
-    .finding {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 1.25rem;
+    /* Strength list */
+    .strength-list { list-style: none; padding: 0; }
+    .strength-list li {
       position: relative;
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      font-size: 0.92rem;
+      color: var(--cream-mid);
+      line-height: 1.65;
     }
-    .finding.new { border-left: 3px solid var(--clr-accent); }
-
-    .finding-head {
-      display: flex;
-      align-items: flex-start;
-      gap: .75rem;
-      margin-bottom: .75rem;
-    }
-    .finding-id {
-      flex-shrink: 0;
-      font-size: .68rem;
+    .strength-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
       font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background: var(--clr-border);
-      color: var(--clr-muted);
-      padding: .2em .55em;
-      border-radius: 4px;
-      margin-top: .15rem;
     }
-    .finding.new .finding-id {
-      background: #1e2a0e;
-      color: var(--clr-accent);
-    }
-    .finding h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--clr-text);
-      line-height: 1.4;
-    }
-
-    .impact-badge {
-      display: inline-block;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding: .18em .55em;
-      border-radius: 4px;
-      margin-bottom: .7rem;
-    }
-    .impact-badge.high   { background: rgba(255,90,90,.15);  color: var(--clr-p0); }
-    .impact-badge.medium { background: rgba(245,166,35,.15); color: var(--clr-p1); }
-    .impact-badge.low    { background: rgba(77,172,245,.12); color: var(--clr-p2); }
-
-    .finding p { font-size: .9rem; color: var(--clr-text); margin-bottom: .6rem; }
-    .finding ul, .finding ol { padding-left: 1.25rem; margin-bottom: .6rem; }
-    .finding li { font-size: .88rem; color: var(--clr-text); margin-bottom: .25rem; }
-    .finding strong { color: var(--clr-accent); font-weight: 600; }
-    .finding code {
-      background: #1e1e1e;
-      border: 1px solid var(--clr-border);
-      padding: .1em .4em;
+    .strength-list li code {
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 0.15em 0.4em;
       border-radius: 3px;
-      font-size: .82em;
-      color: #c8f55a;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-    .finding blockquote {
-      border-left: 3px solid var(--clr-accent);
-      margin: .75rem 0;
-      padding: .5rem 1rem;
-      background: #13180d;
-      border-radius: 0 var(--radius) var(--radius) 0;
-      font-size: .88rem;
-      color: var(--clr-muted);
-      font-style: italic;
-    }
-    .rec-label {
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--clr-accent);
-      font-weight: 700;
-      margin-top: .8rem;
-      margin-bottom: .3rem;
+      font-size: 0.82em;
     }
 
-    /* ── IMAGE PERF HIGHLIGHT ────────────────────────────────── */
-    .perf-highlight {
-      background: #1a0a0a;
-      border: 1px solid rgba(255,90,90,.25);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin: .75rem 0;
-    }
-    .perf-highlight .metric {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: .4rem 0;
-      border-bottom: 1px solid rgba(255,90,90,.1);
-      font-size: .88rem;
-    }
-    .perf-highlight .metric:last-child { border-bottom: none; }
-    .perf-highlight .metric .val { color: var(--clr-p0); font-weight: 700; }
-
-    /* ── CHECKLIST TABLE ─────────────────────────────────────── */
-    .checklist-wrap {
-      overflow-x: auto;
-      margin: 2rem 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .85rem;
-    }
-    th {
-      background: var(--clr-surface);
-      color: var(--clr-accent);
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      padding: .65rem 1rem;
+    /* Issue tables */
+    .issue-table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; font-size: 0.88rem; }
+    .issue-table th {
       text-align: left;
-      border-bottom: 2px solid var(--clr-border);
-    }
-    td {
-      padding: .6rem 1rem;
-      border-bottom: 1px solid var(--clr-border);
-      vertical-align: middle;
-      color: var(--clr-text);
-    }
-    tr:hover td { background: rgba(255,255,255,.02); }
-    .status-ok   { color: var(--clr-ok);   font-size: 1.1rem; }
-    .status-warn { color: var(--clr-warn); font-size: 1.1rem; }
-    .status-fail { color: var(--clr-fail); font-size: 1.1rem; }
-    .status-unk  { color: var(--clr-muted); font-size: 1.1rem; }
-    .prio {
-      display: inline-block;
-      padding: .15em .55em;
-      border-radius: 4px;
-      font-size: .72rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: .05em;
-    }
-    .prio-0 { background: rgba(255,90,90,.18);  color: var(--clr-p0); }
-    .prio-1 { background: rgba(245,166,35,.18); color: var(--clr-p1); }
-    .prio-2 { background: rgba(77,172,245,.15); color: var(--clr-p2); }
-    .prio-3 { background: rgba(136,136,136,.15); color: var(--clr-p3); }
-
-    /* ── ACTION PLAN ─────────────────────────────────────────── */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.25rem;
-    }
-    .action-card {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-    }
-    .action-card .ac-head {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      margin-bottom: .85rem;
-    }
-    .action-card .ac-tag {
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: .25em .65em;
-      border-radius: 40px;
-    }
-    .action-card h3 { font-size: .95rem; color: var(--clr-text); }
-    .action-card ol { padding-left: 1.2rem; }
-    .action-card li { font-size: .85rem; color: var(--clr-muted); margin-bottom: .3rem; }
-    .action-card li strong { color: var(--clr-text); }
-
-    /* ── ROADMAP ─────────────────────────────────────────────── */
-    .roadmap {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .sprint {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0 1.25rem;
-    }
-    .sprint-label {
-      grid-column: 1;
-      grid-row: 1 / 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .3rem;
-    }
-    .sprint-num {
-      width: 2.2rem;
-      height: 2.2rem;
-      background: var(--clr-accent);
-      color: #0e0e0e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-weight: 700;
-      font-size: .85rem;
-      flex-shrink: 0;
-    }
-    .sprint-duration {
-      font-size: .65rem;
-      color: var(--clr-muted);
-      text-align: center;
+      color: var(--cream-mid);
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--line);
       white-space: nowrap;
     }
-    .sprint h3 { font-size: .95rem; font-weight: 600; color: var(--clr-text); margin-bottom: .5rem; }
-    .sprint ul { padding-left: 1.1rem; }
-    .sprint li { font-size: .83rem; color: var(--clr-muted); margin-bottom: .2rem; }
-
-    /* ── BOTTOM LINE ─────────────────────────────────────────── */
-    .bottom-line {
-      background: #13180d;
-      border: 1px solid #2a3318;
-      border-radius: var(--radius);
-      padding: 2rem;
-      margin-top: 2.5rem;
+    .issue-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--cream-mid);
+      vertical-align: top;
+      line-height: 1.6;
     }
-    .bottom-line h2 {
+    .issue-table td:first-child { color: var(--cream); font-weight: 600; text-align: center; width: 2.5rem; }
+    .issue-table td strong { color: var(--cream); }
+    .issue-table td em { color: var(--accent); font-style: italic; }
+    .issue-table td code {
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+    .issue-table tr:hover td { background: rgba(240,235,227,0.02); }
+    .issue-table .col-issue { min-width: 220px; }
+    .issue-table .col-impact { min-width: 160px; }
+    .issue-table .col-fix { min-width: 200px; }
+
+    /* Priority cards */
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .priority-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      border-radius: 4px;
+    }
+    .priority-card .num {
       font-family: var(--font-serif);
-      font-size: 1.35rem;
-      color: var(--clr-accent);
-      margin-bottom: 1.25rem;
+      font-size: 1.8rem;
+      color: rgba(240,235,227,0.15);
+      float: right;
+      margin-left: 0.75rem;
+      line-height: 1;
     }
-    .bl-row {
-      display: flex;
-      gap: .75rem;
-      align-items: flex-start;
-      margin-bottom: .65rem;
+    .priority-card h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--cream);
     }
-    .bl-label {
-      flex-shrink: 0;
-      min-width: 5.5rem;
-      font-size: .72rem;
+    .priority-card p {
+      font-size: 0.82rem;
+      margin-bottom: 0;
+      color: var(--cream-mid);
+    }
+
+    /* Verdict */
+    .verdict {
+      background: var(--bg-card);
+      border: 1px solid rgba(191,255,0,0.15);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+    .verdict p { max-width: none; }
+    .verdict strong { color: var(--cream); }
+
+    /* Category badge */
+    .cat-badge {
+      display: inline-block;
+      font-size: 0.62rem;
       font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--clr-accent);
-      padding-top: .2rem;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 1rem;
     }
-    .bl-row p { font-size: .9rem; color: var(--clr-text); }
-    .one-liner {
-      background: rgba(200,245,90,.07);
-      border: 1px solid rgba(200,245,90,.2);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      font-size: .95rem;
-      font-style: italic;
-      color: var(--clr-text);
-      margin-top: 1.25rem;
-    }
-    .one-liner::before { content: '→ '; color: var(--clr-accent); font-style: normal; font-weight: 700; }
 
-    /* ── FOOTER ─────────────────────────────────────────────── */
+    /* Footer */
     footer {
-      background: var(--clr-surface);
-      border-top: 1px solid var(--clr-border);
-      padding: 1.5rem 2rem;
+      padding: 2rem 0;
       text-align: center;
-      font-size: .78rem;
-      color: var(--clr-muted);
+      font-size: 0.72rem;
+      color: rgba(240,235,227,0.3);
+      letter-spacing: 0.05em;
     }
 
-    /* ── TOC SIDEBAR hint ────────────────────────────────────── */
-    @media (min-width: 1100px) {
-      body { display: grid; grid-template-columns: 1fr; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .issue-table { font-size: 0.82rem; }
+      .issue-table th, .issue-table td { padding: 0.6rem 0.5rem; }
+      .issue-table { display: block; overflow-x: auto; }
     }
 
-    /* ── UTILS ───────────────────────────────────────────────── */
-    .mt-0 { margin-top: 0 !important; }
-    .divider { border: none; border-top: 1px solid var(--clr-border); margin: 2.5rem 0; }
+    /* TOC */
+    .toc { margin: 1.5rem 0; }
+    .toc a {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--cream-mid);
+      text-decoration: none;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      margin: 0.2rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); border-color: rgba(191,255,0,0.3); }
   </style>
 </head>
 <body>
 
-<!-- ─── HEADER ─────────────────────────────────────────────── -->
-<header class="site-header">
-  <a href="/" class="logo-text">Georgiana Gogolan</a>
-  <span class="badge">Internal Review</span>
-</header>
+<div class="wrap">
 
-<!-- ─── HERO ───────────────────────────────────────────────── -->
-<section class="hero">
-  <p class="hero-eyebrow">Site Audit</p>
-  <h1>Review Findings<br/><span>georgianagogolan.com</span></h1>
-  <p class="hero-sub">A comprehensive content, design, SEO and performance audit of the live site and editorial journal.</p>
-  <div class="hero-meta">
-    <span>Date: <strong>22 May 2026</strong></span>
-    <span>Version: <strong>v2 — extended</strong></span>
-    <span>Files reviewed: <strong>index.html + 7 articles + CSS/JS</strong></span>
-  </div>
-</section>
+  <!-- ═══════ HEADER ═══════ -->
+  <header>
+    <h1>🔍 Website Review: <span>georgianagogolan.com</span></h1>
+    <div class="meta">
+      <span><strong>Date:</strong> May 26, 2026</span>
+      <span><strong>Scope:</strong> Content · Layout · Branding · Messaging · UX · Conversion</span>
+      <span><strong>Target:</strong> /site — Architect &amp; Interior Designer</span>
+    </div>
+    <nav class="toc">
+      <a href="#strengths">Strengths</a>
+      <a href="#content">Content &amp; Messaging</a>
+      <a href="#layout">Layout &amp; Hierarchy</a>
+      <a href="#conversion">Conversion &amp; UX</a>
+      <a href="#seo">SEO &amp; Performance</a>
+      <a href="#code">Code Quality</a>
+      <a href="#top5">Top-5 Recommendations</a>
+      <a href="#verdict">Verdict</a>
+    </nav>
+  </header>
 
-<!-- ─── VERDICT BAND ────────────────────────────────────────── -->
-<section class="verdict-band">
-  <div class="inner">
-    <h2>Overall Verdict</h2>
-    <p>The site has a strong visual direction — premium, coherent, editorial and memorable. The personal brand reads clearly, and <em>Designing La Dolce Vita</em> has real potential to become both an SEO and brand asset.</p>
-    <p style="margin-top:.6rem">From an SEO standpoint there are several concrete blockers reducing organic visibility:</p>
-    <ul class="blocker-list" role="list">
-      <li><span class="num">1</span>Sitemap is incomplete and has outdated <code>lastmod</code> dates.</li>
-      <li><span class="num">2</span>Bilingual site runs on a single URL with client-side JS switching — not crawlable as two distinct pages.</li>
-      <li><span class="num">3</span>Homepage and portfolio are image-heavy but thin on crawlable text.</li>
-      <li><span class="num">4</span>Editorial section has good content but is not strongly enough connected internally.</li>
-      <li><span class="num">5</span><strong>Images are unoptimised</strong> — 87 files totalling ~97 MB, no WebP or <code>srcset</code>, individual files up to 7 MB.</li>
+  <!-- ═══════ OVERALL IMPRESSION ═══════ -->
+  <section>
+    <h2>Overall Impression</h2>
+    <p>The website is <strong>excellently built</strong> — a high-quality, editorial portfolio for an architect and interior designer. The technical foundation is clean, the visual language is cohesive, and the code is professionally structured. That said, there are clear opportunities for improvement across several areas.</p>
+  </section>
+
+  <!-- ═══════ STRENGTHS ═══════ -->
+  <section id="strengths">
+    <h2><span class="emoji">✅</span>Strengths</h2>
+
+    <h3>1. Branding &amp; Visual Identity</h3>
+    <ul class="strength-list">
+      <li>Strong, consistent dark-editorial design with a lime accent (<code>#BFFF00</code>) — instantly recognizable and clearly differentiated from the market.</li>
+      <li>Serif/Sans pairing (Playfair Display + DM Sans) is classic-modern and perfectly suited to the target audience (premium residential).</li>
+      <li>Ken Burns hero effect, reveal animations, and marquee band are tastefully executed.</li>
     </ul>
-  </div>
-</section>
 
-<!-- ─── PILLARS ─────────────────────────────────────────────── -->
-<section class="pillars">
-  <div class="inner">
-    <h2>What is working well ✓</h2>
-    <div class="pillar-grid">
-      <div class="pillar-card">
-        <div class="icon">🎨</div>
-        <h3>Visual direction</h3>
-        <p>Premium, editorial aesthetic. Playfair + DM Sans, dark + lime palette — distinctive and on-brand.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon">🔍</div>
-        <h3>SEO foundations</h3>
-        <p><code>&lt;title&gt;</code>, meta description, canonical, OG, JSON-LD, <code>robots.txt</code> and sitemap all present.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon">✍️</div>
-        <h3>Editorial content</h3>
-        <p>Journal articles are long enough to index. Niched topics (Milan Design Week, brand spotlights, interviews).</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon">♿</div>
-        <h3>Accessibility</h3>
-        <p>Skip link, ARIA labels, <code>aria-expanded</code>, <code>aria-live</code>, <code>prefers-reduced-motion</code>.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon">⚙️</div>
-        <h3>Technical foundation</h3>
-        <p>Framework-free HTML/CSS/JS. Cache headers and gzip via <code>.htaccess</code>. <code>llms.txt</code> present.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── DETAILED FINDINGS ────────────────────────────────────── -->
-<div class="content-wrap">
-
-  <!-- == A. CONTENT ============================================== -->
-  <h2 class="section-title">A — Content</h2>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">A1</span>
-      <h3>Homepage reads beautifully but says too little for search</h3>
-    </div>
-    <span class="impact-badge high">High impact</span>
-    <p>The portfolio is almost entirely visual. Projects have evocative names but no dedicated pages, and there is no descriptive text about project scope, client types, deliverables, location or outcomes. Google cannot rank the page for intent queries like <em>"architect Bucharest"</em> or <em>"interior designer Romania"</em>.</p>
-    <p class="rec-label">Recommendations</p>
-    <ul>
-      <li>Add 1–2 paragraphs about services offered, project types and geography.</li>
-      <li>Turn key projects into individual crawlable pages.</li>
-      <li>Include natural phrasing: <em>"architect in Bucharest"</em>, <em>"residential interiors"</em>, <em>"boutique commercial spaces"</em>.</li>
+    <h3>2. Technical Quality</h3>
+    <ul class="strength-list">
+      <li>Responsive <code>srcset</code>/<code>sizes</code> on all images — excellent for performance.</li>
+      <li>Hero image preloaded with <code>fetchpriority="high"</code> → strong LCP score.</li>
+      <li>Structured Data (JSON-LD) with Person, WebSite, LocalBusiness — SEO-optimal.</li>
+      <li><code>hreflang</code> tags, canonical, OG/Twitter Cards — fully implemented.</li>
+      <li><code>prefers-reduced-motion</code> correctly supported.</li>
+      <li>Skip link, ARIA labels, <code>role="alert"</code> on forms — solid accessibility foundation.</li>
+      <li><code>llms.txt</code> — forward-thinking for AI/LLM discovery.</li>
+      <li>Font loading with <code>media="print" onload</code> → non-render-blocking fonts.</li>
     </ul>
-  </div>
 
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">A2</span>
-      <h3><em>Designing La Dolce Vita</em> has strong potential as a content hub</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>The hub page has a good title, H1, article listings and a <code>Blog</code> schema — a solid starting point. However, there is very little original introductory text, limiting its ability to compete for relevant queries.</p>
-    <blockquote>"Designing La Dolce Vita is Georgiana Gogolan's editorial series about architecture, interior design, Milan Design Week and the emotional experience of space."</blockquote>
-    <p class="rec-label">Recommendation</p>
-    <p>Add ~150–250 words of descriptive intro text below the H1 explaining what the series is, why it exists, and who it is for.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">A3</span>
-      <h3>Language inconsistency in the journal</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>Six articles are in English; the newest (<code>mihai-gurei-interview/</code>) uses <code>&lt;html lang="ro"&gt;</code>. This creates a mixed editorial experience and complicates any multilingual SEO strategy.</p>
-    <p class="rec-label">Choose one approach</p>
-    <ol>
-      <li>Keep the journal in English; give Romanian articles their own alternate URL.</li>
-      <li>Separate EN and RO onto distinct paths with proper <code>hreflang</code>.</li>
-      <li>Publish everything in one language until resources allow full localisation.</li>
-    </ol>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">A4</span>
-      <h3>Inconsistent brand naming</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>The section name alternates between <strong>Designing La Dolce Vita</strong> and <strong>Designing la Dolce Vita</strong> across titles, nav links, breadcrumbs and schema markup. Choose one official casing and apply it everywhere.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">A5 ✱</span>
-      <h3>Authorship inconsistency between articles</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>Articles carry two different authors in OG metadata and JSON-LD: <strong>Georgiana Gogolan</strong> on four articles, <strong>Andreea Pohrib</strong> on three. Andreea has no visible presence on the frontend (no byline, no bio). Her <code>author</code> JSON-LD object also lacks a <code>url</code> field.</p>
-    <p class="rec-label">Recommendations</p>
-    <ul>
-      <li>Decide whether to credit co-authors visibly (byline, bio card).</li>
-      <li>Standardise JSON-LD — all <code>author</code> objects must include a <code>url</code>.</li>
-      <li>If Andreea ghost-writes, attribute all articles to Georgiana for brand consistency.</li>
+    <h3>3. Content Architecture</h3>
+    <ul class="strength-list">
+      <li>Clear storytelling hierarchy: Hero → Roles → Portfolio → Services → Process → About → Social → Journal → Contact.</li>
+      <li>Bilingual i18n system (EN/RO) with complete translations.</li>
+      <li>Blog/Journal section with professional card layout and featured-article pattern.</li>
     </ul>
-  </div>
 
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">A6 ✱</span>
-      <h3><code>llms.txt</code> is missing the newest article</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p><code>site/llms.txt</code> lists 6 articles; <code>mihai-gurei-interview/</code> is absent. Update <code>llms.txt</code> every time a new article is published.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">A7 ✱</span>
-      <h3>Featured journal card uses lazy loading above the fold</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>All article card images in <code>designingladolcevita/index.html</code> use <code>loading="lazy"</code> — including the large featured card visible above the fold on most screens. This delays the LCP image.</p>
-    <p class="rec-label">Fix</p>
-    <p>Set <code>loading="eager"</code> on the first (featured) card image only.</p>
-  </div>
-
-  <!-- == B. DESIGN / UX ========================================== -->
-  <h2 class="section-title">B — Design / UX</h2>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">B2</span>
-      <h3>Portfolio looks interactive but leads nowhere</h3>
-    </div>
-    <span class="impact-badge high">High impact</span>
-    <p>Portfolio items are <code>div</code> blocks — not links. Users expect to click through to project pages. Google also sees far less depth than it would with dedicated URLs for each project.</p>
-    <p class="rec-label">Recommendation</p>
-    <p>Create individual project pages with images, description, role, location, year, services and brief process notes. Add a "View project" CTA on each card.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">B5</span>
-      <h3>Legal / trust inconsistency in forms and footer</h3>
-    </div>
-    <span class="impact-badge high">High impact</span>
-    <p>The newsletter form has a GDPR consent checkbox. The homepage contact form does not. Critically, <strong>the homepage footer has no Privacy Policy link at all</strong> — even though every other page includes one.</p>
-    <p class="rec-label">Recommendations</p>
-    <ul>
-      <li>Add a short privacy note + link near the contact form.</li>
-      <li>Add a Privacy Policy link in the homepage <code>footer-bottom</code> section.</li>
+    <h3>4. Conversion Elements</h3>
+    <ul class="strength-list">
+      <li>CTA "Book a consultation" in nav (desktop).</li>
+      <li>Formspree contact form with validation and error states.</li>
+      <li>Announcement bar for content promotion.</li>
+      <li>Brand names in the marquee provide social proof.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">B6</span>
-      <h3>No explicit image dimensions in HTML</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>All <code>&lt;img&gt;</code> elements lack <code>width</code> and <code>height</code> attributes, risking CLS (Cumulative Layout Shift) on slow connections. Add dimensions, or ensure wrappers have <code>aspect-ratio</code> set in CSS.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">B7 ✱</span>
-      <h3>All forms share one Formspree endpoint</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>Contact enquiries and newsletter signups from all 8+ pages post to <code>https://formspree.io/f/mojpqvnd</code>. They are only separated by a <code>source</code> field — there is no inbox-level routing.</p>
-    <p class="rec-label">Recommendation</p>
-    <p>Create a second Formspree endpoint for the newsletter, or configure labels/filters within the account.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">B8 ✱</span>
-      <h3>Inline JS duplicated across all article pages</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>Each article page re-implements navigation, scroll reveal and newsletter form logic inline — the same code that already exists in <code>main.js</code>. Any fix must be applied in 8+ places manually.</p>
-    <p class="rec-label">Recommendation</p>
-    <p>Move shared logic into <code>main.js</code> (or a new <code>blog.js</code>) and load it via <code>&lt;script src&gt;</code> on article pages.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">B9 ✱</span>
-      <h3>Inline <code>&lt;style&gt;</code> blocks on journal pages</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>Each journal page contains an inline <code>&lt;style&gt;</code> block of 100–160 lines. Styles are not separately cacheable and are partially duplicated across pages. Move them into a shared <code>blog.css</code>.</p>
-  </div>
-
-  <!-- == C. SEO ================================================== -->
-  <h2 class="section-title">C — SEO</h2>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">C1</span>
-      <h3>Sitemap is incomplete and has stale modification dates</h3>
-    </div>
-    <span class="impact-badge high">Very high priority</span>
-    <p><code>site/sitemap.xml</code> is missing <code>https://georgianagogolan.com/designingladolcevita/mihai-gurei-interview/</code>. Also, <code>lastmod</code> on <code>designingladolcevita/</code> shows <code>2026-04-23</code> even though the section has been updated since. An incomplete sitemap slows Googlebot's crawl discovery.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">C2</span>
-      <h3>Multilingual implementation is not SEO-friendly</h3>
-    </div>
-    <span class="impact-badge high">High impact</span>
-    <p>All three <code>hreflang</code> tags on the homepage point to the same URL (<code>/</code>). Google sees one page, not two. Language is switched via client-side JS — no second indexable URL is produced for the Romanian version.</p>
-    <p class="rec-label">If separate EN/RO visibility is the goal</p>
-    <ul>
-      <li>Create distinct URL paths, e.g. <code>/</code> (EN) and <code>/ro/</code> (RO).</li>
-      <li>Add proper <code>hreflang</code> cross-references between them.</li>
-      <li>Set canonical tags appropriately on each version.</li>
-    </ul>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">C5</span>
-      <h3>Structured data good but inconsistent between articles</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>All articles use <code>BlogPosting</code> + <code>BreadcrumbList</code> — correct schema types. Field completeness varies: some have richer JSON-LD, others are minimal. Author objects are inconsistent (<code>url</code> present on some, absent on others).</p>
-    <p class="rec-label">Standardise template to always include</p>
-    <p><code>headline</code>, <code>description</code>, <code>image</code>, <code>author</code> (with <code>url</code>), <code>publisher</code>, <code>datePublished</code>, <code>dateModified</code>, <code>inLanguage</code>, <code>mainEntityOfPage</code>, <code>BreadcrumbList</code>.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">C8</span>
-      <h3>Internal linking is thin</h3>
-    </div>
-    <span class="impact-badge medium">Medium impact</span>
-    <p>The journal is linked from the nav and a few homepage locations. More is needed to distribute authority and guide users.</p>
-    <ul style="margin-top:.5rem">
-      <li>A "Featured from Designing La Dolce Vita" block on the homepage.</li>
-      <li>Related article links at the bottom of each post.</li>
-      <li>Contextual links from articles to relevant services or contact.</li>
-    </ul>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">C10</span>
-      <h3>Invalid markup in the Mihai Gurei article</h3>
-    </div>
-    <span class="impact-badge low">Medium priority</span>
-    <p>Line 287 of <code>mihai-gurei-interview/index.html</code> contains an unclosed <code>&lt;p&gt;</code> tag — the paragraph ends with a <code>&lt;div class="img-trio"&gt;</code> at line 290 without a closing <code>&lt;/p&gt;</code>. Quick fix; validate with an HTML validator after.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">C11 ✱</span>
-      <h3>Massively unoptimised images — the single biggest performance risk</h3>
-    </div>
-    <span class="impact-badge high">Critical — do first</span>
-    <div class="perf-highlight">
-      <div class="metric"><span>Total image weight</span><span class="val">~97 MB across 87 files</span></div>
-      <div class="metric"><span>Heaviest portfolio image</span><span class="val">4.1 MB — project-cielo-aperto.jpg</span></div>
-      <div class="metric"><span>Heaviest article image</span><span class="val">7.3 MB — talenti-8.png</span></div>
-      <div class="metric"><span>Images in WebP/AVIF</span><span class="val">0 of 87</span></div>
-      <div class="metric"><span>Images with <code>srcset</code></span><span class="val">0 of 87</span></div>
-    </div>
-    <p>A single homepage load can transfer 30–40 MB in images alone. Core Web Vitals (LCP, FCP) will be significantly affected. Google uses CWV as a ranking factor.</p>
-    <p class="rec-label">Recommendations — do these first</p>
-    <ol>
-      <li>Convert all images to <strong>WebP</strong> (JPG fallback via <code>&lt;picture&gt;</code>).</li>
-      <li>Resize: portfolio images ≤ 1,600 px wide; article images ≤ 1,200 px wide.</li>
-      <li>Compress: JPG @ 80–85%; WebP @ 75–80%.</li>
-      <li>Add <code>srcset</code> variants at 480w, 960w and 1,600w.</li>
-      <li>Targets: homepage &lt; 3 MB total; per article &lt; 2 MB.</li>
-    </ol>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">C12 ✱</span>
-      <h3>OG tags incomplete on sub-pages</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>Homepage has a full OG set. Journal and article pages are missing <code>og:image:width</code>, <code>og:image:height</code> and <code>og:image:alt</code>. Social media previews may be poorly formatted on LinkedIn, Facebook and WhatsApp.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">C13 ✱</span>
-      <h3>No <code>theme-color</code> meta and no web app manifest</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>Adding <code>&lt;meta name="theme-color" content="#111111"&gt;</code> would give mobile browsers an integrated address bar colour. A <code>site.webmanifest</code> improves Android home screen integration. Minor, but quick wins.</p>
-  </div>
-
-  <div class="finding new">
-    <div class="finding-head">
-      <span class="finding-id">C14 ✱</span>
-      <h3>No language switcher on journal or article pages</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p>The EN/RO toggle on the homepage disappears entirely in the journal and articles. If the journal is intentionally English-only, add a small note such as <em>"available in English only"</em> to set expectations.</p>
-  </div>
-
-  <!-- == D. PERFORMANCE ========================================== -->
-  <h2 class="section-title">D — Performance</h2>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">D1</span>
-      <h3>CSS — single file of ~58 KB (uncompressed)</h3>
-    </div>
-    <span class="impact-badge low">Low priority</span>
-    <p><code>style.css</code> bundles every component's styles including those only used on specific pages (MDW series, blog cards). Every page downloads and parses all of it. Acceptable now, but splitting into <code>base.css</code> + <code>blog.css</code> would help in the long term.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">D2</span>
-      <h3>Font loading — well configured ✓</h3>
-    </div>
-    <p>Google Fonts with <code>preconnect</code> + <code>display=swap</code> is correct practice — avoids FOIT (Flash of Invisible Text). Consistent across all pages. No action needed.</p>
-  </div>
-
-  <div class="finding">
-    <div class="finding-head">
-      <span class="finding-id">D3</span>
-      <h3>JS — lightweight, but duplicated on article pages</h3>
-    </div>
-    <span class="impact-badge low">Low impact</span>
-    <p><code>main.js</code> (~14 KB) + <code>i18n.js</code> (~18 KB) = ~32 KB total. With gzip, real transfer is ~10–12 KB — excellent for a framework-free site. The only issue is the inline JS duplication across article pages (see B8).</p>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- == CHECKLIST =============================================== -->
-  <h2 class="section-title mt-0">Summary Checklist</h2>
-
-  <div class="checklist-wrap">
-    <table>
+  <!-- ═══════ A. CONTENT & MESSAGING ═══════ -->
+  <section id="content">
+    <span class="cat-badge">A</span>
+    <h2><span class="emoji">⚠️</span>Content &amp; Messaging</h2>
+    <table class="issue-table">
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Item</th>
-          <th>Status</th>
-          <th>Priority</th>
-        </tr>
+        <tr><th>#</th><th class="col-issue">Issue</th><th class="col-impact">Impact</th><th class="col-fix">Recommendation</th></tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>Sitemap complete and up-to-date</td><td><span class="status-ok">✅</span> <code>mihai-gurei-interview/</code> added; <code>lastmod</code> updated to <code>2026-05-19</code></td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>2</td><td><code>llms.txt</code> up-to-date</td><td><span class="status-ok">✅</span> newest article added</td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>3</td><td>Valid HTML markup</td><td><span class="status-ok">✅</span> unclosed <code>&lt;p&gt;</code> in Mihai Gurei article fixed</td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>4</td><td>Consistent brand naming</td><td><span class="status-ok">✅</span> normalised to <code>Designing La Dolce Vita</code> everywhere</td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>5</td><td>Privacy Policy link on homepage</td><td><span class="status-ok">✅</span> added to footer-bottom and near contact form</td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>6</td><td>Featured card <code>loading="eager"</code></td><td><span class="status-ok">✅</span> set on featured card image</td><td><span class="prio prio-0">P0</span></td></tr>
-        <tr><td>7</td><td>Image optimisation (WebP + resize + compress)</td><td><span class="status-fail">❌</span> 87 files, ~97 MB</td><td><span class="prio prio-1">P1</span></td></tr>
-        <tr><td>8</td><td>Journal hub intro text</td><td><span class="status-fail">❌</span> too thin</td><td><span class="prio prio-1">P1</span></td></tr>
-        <tr><td>9</td><td>Featured journal block on homepage</td><td><span class="status-fail">❌</span> does not exist</td><td><span class="prio prio-1">P1</span></td></tr>
-        <tr><td>10</td><td>Project detail pages</td><td><span class="status-fail">❌</span> do not exist</td><td><span class="prio prio-1">P1</span></td></tr>
-        <tr><td>11</td><td>Internal linking depth</td><td><span class="status-warn">⚠️</span> minimal</td><td><span class="prio prio-1">P1</span></td></tr>
-        <tr><td>12</td><td>Multilingual on separate URLs</td><td><span class="status-fail">❌</span> client-side only</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>13</td><td>JSON-LD standardised across articles</td><td><span class="status-warn">⚠️</span> inconsistent</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>14</td><td>Responsive images (<code>srcset</code>)</td><td><span class="status-fail">❌</span> missing</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>15</td><td>OG tags complete on all pages</td><td><span class="status-warn">⚠️</span> partial</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>16</td><td>No inline JS/CSS duplication</td><td><span class="status-warn">⚠️</span> duplicated in 8+ places</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>17</td><td>Author attribution consistent</td><td><span class="status-warn">⚠️</span> 2 authors, no visible credit</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>18</td><td>Separate Formspree endpoints</td><td><span class="status-warn">⚠️</span> all on one endpoint</td><td><span class="prio prio-2">P2</span></td></tr>
-        <tr><td>19</td><td>Google Search Console connected</td><td><span class="status-unk">❓</span> unknown</td><td><span class="prio prio-3">P3</span></td></tr>
-        <tr><td>20</td><td>Server-level redirects (HTTPS, www, slash)</td><td><span class="status-fail">❌</span> missing</td><td><span class="prio prio-3">P3</span></td></tr>
-        <tr><td>21</td><td><code>theme-color</code> meta tag</td><td><span class="status-fail">❌</span> missing</td><td><span class="prio prio-3">P3</span></td></tr>
+        <tr>
+          <td>1</td>
+          <td><strong>Hero tagline "Designing La Dolce Vita"</strong> is vague — says nothing about the service</td>
+          <td>First-time visitors don't immediately know what's offered</td>
+          <td>Add a subline, e.g. <em>"Refined interiors for people who live with intention."</em></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>"I'm your guide for a conscious home"</strong> in the portfolio header sounds esoteric</td>
+          <td>May alienate premium clients</td>
+          <td>Alternative wording: <em>"Spaces designed to feel like you."</em></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>15 portfolio items with no actual project pages</strong> — all are hover-only overlays</td>
+          <td>Visitors can't explore any project in detail → weak persuasion</td>
+          <td>Link at least 3–5 case studies with before/after, floor plans, material breakdowns.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>No social proof / testimonials</strong></td>
+          <td>Missing trust signal for high-value leads</td>
+          <td>Add a short testimonial section between Services and About.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Mixed voice:</strong> "Georgiana works…" (Services) vs. "I have lived…" (About)</td>
+          <td>Inconsistent tone</td>
+          <td>Use first person throughout for authenticity.</td>
+        </tr>
       </tbody>
     </table>
-  </div>
+  </section>
 
-  <hr class="divider" />
+  <!-- ═══════ B. LAYOUT & HIERARCHY ═══════ -->
+  <section id="layout">
+    <span class="cat-badge">B</span>
+    <h2><span class="emoji">📐</span>Layout &amp; Visual Hierarchy</h2>
+    <table class="issue-table">
+      <thead>
+        <tr><th>#</th><th class="col-issue">Issue</th><th class="col-impact">Impact</th><th class="col-fix">Recommendation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>6</td>
+          <td><strong>Portfolio mosaic on mobile: 240px rows in single-column</strong></td>
+          <td>Images are heavily cropped, details lost</td>
+          <td>Increase mobile row height to <code>auto</code> or min. <code>300px</code>.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>Process grid: 5 columns on desktop</strong></td>
+          <td>Too narrow, text becomes hard to read</td>
+          <td>Use <code>repeat(auto-fit, minmax(200px, 1fr))</code>.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>About portrait: fixed 260px width, 360px height</strong></td>
+          <td>Feels small and lost on large screens</td>
+          <td>Use a more responsive grid: <code>minmax(260px, 320px)</code>.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><strong>Social media block is very long</strong> (IG + YT + CTA × 2)</td>
+          <td>Scrolling overhead, attention disperses</td>
+          <td>Convert to a tabbed or carousel pattern.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><strong>Footer labels "Navigate" and "Follow" not translated</strong></td>
+          <td>Inconsistency in RO mode</td>
+          <td>Add <code>data-i18n</code> keys for both labels.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <!-- == ACTION PLAN ============================================= -->
-  <h2 class="section-title mt-0">Prioritised Action Plan</h2>
+  <!-- ═══════ C. CONVERSION & UX ═══════ -->
+  <section id="conversion">
+    <span class="cat-badge">C</span>
+    <h2><span class="emoji">🎯</span>Conversion &amp; UX</h2>
+    <table class="issue-table">
+      <thead>
+        <tr><th>#</th><th class="col-issue">Issue</th><th class="col-impact">Impact</th><th class="col-fix">Recommendation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11</td>
+          <td><strong>CTA "Book a consultation" only visible on desktop</strong> (<code>display:none !important</code> on mobile)</td>
+          <td>Mobile visitors see no header CTA</td>
+          <td>Add a sticky CTA button at the bottom or include it in the mobile menu.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><strong>No phone / WhatsApp field in contact form</strong></td>
+          <td>Interior design clients prefer quick communication</td>
+          <td>Add a phone number field or WhatsApp quick-link.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><strong>Form privacy text is not translatable</strong> (hardcoded English)</td>
+          <td>RO visitors see the English privacy notice</td>
+          <td>Introduce a <code>data-i18n-html</code> key for the privacy note.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><strong>Portfolio items are not clickable</strong> (no <code>&lt;a&gt;</code> tag)</td>
+          <td>Missed opportunity for deeper engagement</td>
+          <td>Wrap items in <code>&lt;a&gt;</code> tags and link to case studies.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><strong>Announcement bar dismissed via <code>sessionStorage</code></strong></td>
+          <td>Returns in a new tab</td>
+          <td>Use <code>localStorage</code> with an expiry timestamp.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <div class="action-grid">
-    <div class="action-card">
-      <div class="ac-head">
-        <span class="ac-tag prio-0" style="background:rgba(255,90,90,.18);color:var(--clr-p0)">P0 — Do immediately</span>
+  <!-- ═══════ D. SEO & PERFORMANCE ═══════ -->
+  <section id="seo">
+    <span class="cat-badge">D</span>
+    <h2><span class="emoji">⚡</span>SEO &amp; Performance</h2>
+    <table class="issue-table">
+      <thead>
+        <tr><th>#</th><th class="col-issue">Issue</th><th class="col-impact">Impact</th><th class="col-fix">Recommendation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>16</td>
+          <td><strong>Google Fonts loaded externally</strong></td>
+          <td>FOUT/CLS risk, external dependency, GDPR concern</td>
+          <td>Self-host via <code>@font-face</code> with <code>woff2</code> subsets.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><strong>No <code>&lt;meta name="keywords"&gt;</code></strong></td>
+          <td>Barely relevant for modern SEO</td>
+          <td>No action needed.</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><strong>Blog subpages lack <code>font-display: swap</code></strong></td>
+          <td>Potential FOIT on blog pages</td>
+          <td>Apply the same font-loading mechanism used on the homepage.</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><strong>All 15 portfolio items load simultaneously</strong></td>
+          <td>On slow connections, 15+ images queue at once</td>
+          <td>Add a "Load more" button or batch-load after 6 items.</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td><strong>.htaccess: HTML with <code>no-cache</code></strong></td>
+          <td>Correct but suboptimal</td>
+          <td>Consider <code>stale-while-revalidate=86400</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════ E. CODE QUALITY ═══════ -->
+  <section id="code">
+    <span class="cat-badge">E</span>
+    <h2><span class="emoji">🧹</span>Code Quality &amp; Minor Issues</h2>
+    <table class="issue-table">
+      <thead>
+        <tr><th>#</th><th class="col-issue">Issue</th><th class="col-impact">Impact</th><th class="col-fix">Recommendation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>21</td>
+          <td><strong><code>em { color: var(--accent); }</code> is a global rule</strong></td>
+          <td>Every <code>&lt;em&gt;</code> turns lime — even when unintended</td>
+          <td>Use a class like <code>.accent-em</code> or scope to specific sections.</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td><strong><code>initNewsletter()</code> with no <code>#newsletter-form</code> in HTML</strong></td>
+          <td>Dead code</td>
+          <td>Build the newsletter section or remove the function.</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td><strong>HTML comment numbering is off</strong></td>
+          <td>Confusing during maintenance</td>
+          <td>Align comments to the actual order.</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td><strong><code>const</code> in i18n.js, <code>var</code> in main.js/shared.js</strong></td>
+          <td>Inconsistent code style</td>
+          <td>Standardize on <code>const/let</code> or <code>var</code> throughout.</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td><strong>No <code>rel="me"</code> on social links</strong></td>
+          <td>Missed verified-link opportunity</td>
+          <td>Set <code>rel="me noopener noreferrer"</code> on profile links.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════ TOP 5 ═══════ -->
+  <section id="top5">
+    <h2><span class="emoji">🏆</span>Prioritized Top-5 Recommendations</h2>
+    <div class="priority-grid">
+      <div class="priority-card">
+        <span class="num">01</span>
+        <h4>Make portfolio clickable + add case studies</h4>
+        <p>Link at least 3–5 project pages with detail photos, floor plans, and material breakdowns — highest impact on conversion.</p>
       </div>
-      <ol>
-        <li>✅ <strong>Update <code>sitemap.xml</code></strong> — <code>mihai-gurei-interview/</code> added; <code>lastmod</code> on <code>designingladolcevita/</code> updated to <code>2026-05-19</code>.</li>
-        <li>✅ <strong>Fix unclosed <code>&lt;p&gt;</code></strong> in Mihai Gurei article (line 287) — closed.</li>
-        <li>✅ <strong>Normalise brand naming</strong> — <code>Designing La Dolce Vita</code> applied everywhere.</li>
-        <li>✅ <strong>Add Privacy Policy link</strong> to homepage footer and near the contact form — done.</li>
-        <li>✅ <strong>Update <code>llms.txt</code></strong> to include newest article — done.</li>
-        <li>✅ <strong>Set <code>loading="eager"</code></strong> on featured card image in journal index — done.</li>
-      </ol>
-    </div>
-
-    <div class="action-card">
-      <div class="ac-head">
-        <span class="ac-tag prio-1" style="background:rgba(245,166,35,.18);color:var(--clr-p1)">P1 — Highest SEO impact</span>
+      <div class="priority-card">
+        <span class="num">02</span>
+        <h4>Add a testimonial section</h4>
+        <p>Short client quotes between Services and About — the most important missing trust element for high-value leads.</p>
       </div>
-      <ol start="7">
-        <li><strong>Optimise all images</strong> — WebP + resize + compress. Homepage &lt; 3 MB, per article &lt; 2 MB.</li>
-        <li><strong>Expand journal hub intro</strong> — 150–250 words of rich descriptive text.</li>
-        <li><strong>Add featured journal block</strong> to homepage with 2–3 articles.</li>
-        <li><strong>Create dedicated project pages</strong> for key portfolio items.</li>
-        <li><strong>Strengthen internal linking</strong> — articles ↔ homepage ↔ services.</li>
-      </ol>
-    </div>
-
-    <div class="action-card">
-      <div class="ac-head">
-        <span class="ac-tag prio-2" style="background:rgba(77,172,245,.15);color:var(--clr-p2)">P2 — Medium-term growth</span>
+      <div class="priority-card">
+        <span class="num">03</span>
+        <h4>Make the mobile CTA visible</h4>
+        <p>"Book a consultation" in the mobile menu or as a sticky footer button — currently completely hidden on mobile devices.</p>
       </div>
-      <ol start="12">
-        <li><strong>Separate EN/RO URLs</strong> with proper <code>hreflang</code>.</li>
-        <li><strong>Create services / case study pages</strong>.</li>
-        <li><strong>Standardise JSON-LD</strong> across all articles.</li>
-        <li><strong>Add <code>width</code> / <code>height</code></strong> on all images.</li>
-        <li><strong>Add <code>srcset</code></strong> for responsive delivery.</li>
-        <li><strong>Complete OG tags</strong> on journal and article pages.</li>
-        <li><strong>Extract inline JS/CSS</strong> into shared external files.</li>
-        <li><strong>Separate Formspree endpoints</strong> — contact vs newsletter.</li>
-      </ol>
-    </div>
-
-    <div class="action-card">
-      <div class="ac-head">
-        <span class="ac-tag prio-3" style="background:rgba(136,136,136,.15);color:var(--clr-p3)">P3 — Off-page / operational</span>
+      <div class="priority-card">
+        <span class="num">04</span>
+        <h4>Self-host Google Fonts</h4>
+        <p>Embed fonts locally as woff2 subsets — performance gain and GDPR compliance (no external Google call).</p>
       </div>
-      <ol start="21">
-        <li><strong>Set up Google Search Console</strong> and submit the sitemap.</li>
-        <li><strong>Request indexing</strong> for journal hub and all articles.</li>
-        <li><strong>Earn external links</strong> — YouTube, Instagram, LinkedIn, Space Casuals, press.</li>
-        <li><strong>Add <code>.htaccess</code> redirect rules</strong> — HTTPS, www/non-www, trailing slashes.</li>
-      </ol>
-    </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- == ROADMAP ================================================= -->
-  <h2 class="section-title mt-0">Implementation Roadmap</h2>
-
-  <div class="roadmap">
-    <div class="sprint">
-      <div class="sprint-label">
-        <span class="sprint-num">1</span>
-        <span class="sprint-duration">1–2 days</span>
+      <div class="priority-card">
+        <span class="num">05</span>
+        <h4>Complete the i18n system</h4>
+        <p>Integrate footer labels "Navigate"/"Follow" and the form privacy note into translations — for a fully localized RO experience.</p>
       </div>
-      <h3>Quick wins</h3>
-      <ul>
-        <li>✅ Update <code>sitemap.xml</code> and <code>llms.txt</code></li>
-        <li>✅ Fix unclosed <code>&lt;p&gt;</code> in Mihai Gurei article</li>
-        <li>✅ Add Privacy Policy link to homepage footer and contact form</li>
-        <li>✅ Normalise "Designing La Dolce Vita" naming everywhere</li>
-        <li>✅ Set <code>loading="eager"</code> on featured journal card image</li>
-        <li>Add <code>&lt;meta name="theme-color"&gt;</code> to all pages</li>
-      </ul>
     </div>
-    <div class="sprint">
-      <div class="sprint-label">
-        <span class="sprint-num">2</span>
-        <span class="sprint-duration">2–3 days</span>
-      </div>
-      <h3>Image optimisation</h3>
-      <ul>
-        <li>Convert all images to WebP</li>
-        <li>Resize: portfolio ≤ 1,600 px; articles ≤ 1,200 px</li>
-        <li>Add <code>srcset</code> on hero and portfolio images</li>
-        <li>Add <code>width</code> / <code>height</code> attributes on all key images</li>
-        <li>Validate with Google PageSpeed Insights</li>
-      </ul>
-    </div>
-    <div class="sprint">
-      <div class="sprint-label">
-        <span class="sprint-num">3</span>
-        <span class="sprint-duration">1 week</span>
-      </div>
-      <h3>Content and SEO depth</h3>
-      <ul>
-        <li>Expand journal hub intro text</li>
-        <li>Add featured journal block to homepage</li>
-        <li>Add related / next article navigation</li>
-        <li>Create 3–5 project detail pages</li>
-        <li>Standardise JSON-LD across all article templates</li>
-        <li>Add complete OG tags to all pages</li>
-      </ul>
-    </div>
-    <div class="sprint">
-      <div class="sprint-label">
-        <span class="sprint-num">4</span>
-        <span class="sprint-duration">Ongoing</span>
-      </div>
-      <h3>Architecture and growth</h3>
-      <ul>
-        <li>Extract inline JS / CSS into shared external files</li>
-        <li>Implement EN / RO URL strategy with <code>hreflang</code></li>
-        <li>Create dedicated services page</li>
-        <li>Separate Formspree endpoints</li>
-        <li>Set up Google Search Console + submit sitemap</li>
-        <li>Add <code>.htaccess</code> redirect rules</li>
-      </ul>
-    </div>
-  </div>
+  </section>
 
-  <hr class="divider" />
+  <!-- ═══════ VERDICT ═══════ -->
+  <section id="verdict">
+    <h2><span class="emoji">📋</span>Verdict</h2>
+    <div class="verdict">
+      <p>The website is at a <strong>very high level</strong> — both technically and visually. The biggest gaps are not in the code but in <strong>content depth</strong>: the portfolio remains surface-level (no project details), social proof is missing, and the mobile conversion pipeline is broken.</p>
+      <p>Implementing the measures above would significantly increase effectiveness without changing the strong visual concept.</p>
+    </div>
+  </section>
 
-  <!-- == BOTTOM LINE ============================================= -->
-  <div class="bottom-line">
-    <h2>Bottom Line</h2>
-    <div class="bl-row">
-      <span class="bl-label">Design</span>
-      <p>Very strong, distinctive and memorable. A genuine editorial identity that stands out.</p>
-    </div>
-    <div class="bl-row">
-      <span class="bl-label">Content</span>
-      <p>Good in tone and brand voice, but the homepage and portfolio are too image-heavy and text-light for effective SEO.</p>
-    </div>
-    <div class="bl-row">
-      <span class="bl-label">SEO</span>
-      <p>Foundations are in place, but several concrete gaps need to be resolved for <em>Designing La Dolce Vita</em> to gain meaningful organic visibility.</p>
-    </div>
-    <div class="bl-row">
-      <span class="bl-label">Performance</span>
-      <p>The most urgent problem is image weight (~97 MB total, files up to 7 MB). This directly impacts Core Web Vitals and therefore search rankings.</p>
-    </div>
-    <p class="one-liner"><em>Designing La Dolce Vita</em> already has the right editorial hub format — but for better organic visibility it urgently needs an updated sitemap, optimised images, consistent naming, stronger internal linking, and a more SEO-friendly multilingual strategy.</p>
-  </div>
-
-</div><!-- /content-wrap -->
+</div>
 
 <footer>
-  <p>Internal audit document · georgianagogolan.com · 22 May 2026 · Do not index</p>
+  <div class="wrap">Website Review · georgianagogolan.com · May 26, 2026</div>
 </footer>
 
 </body>
