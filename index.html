@@ -159,6 +159,99 @@
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.6); } }
     @media (prefers-reduced-motion: reduce) { .b2-pulse, .b4-pulse { animation: none; } }
 
+    /* ═══ OPTION 6 — Dismissible Popup ═══ */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: center; padding: 1.2rem;
+      background: rgba(8, 8, 7, 0.66); backdrop-filter: blur(6px);
+      opacity: 0; visibility: hidden; transition: opacity .4s var(--ease), visibility .4s var(--ease);
+    }
+    .popup-overlay.open { opacity: 1; visibility: visible; }
+    .popup-card {
+      position: relative; width: 100%; max-width: 440px; overflow: hidden;
+      background: linear-gradient(165deg, rgba(28,28,22,0.96), rgba(15,15,14,0.96));
+      border: 1px solid var(--line-strong); border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      transform: translateY(24px) scale(0.96); opacity: 0;
+      transition: transform .5s var(--ease), opacity .5s var(--ease);
+    }
+    .popup-overlay.open .popup-card { transform: translateY(0) scale(1); opacity: 1; }
+    .popup-close {
+      position: absolute; top: 0.9rem; right: 0.9rem; z-index: 3;
+      width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+      background: rgba(15,15,14,0.5); border: 1px solid var(--line-strong);
+      color: var(--cream-mid); display: grid; place-items: center;
+      transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
+    }
+    .popup-close:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+    .popup-close svg { width: 16px; height: 16px; }
+    .popup-thumb {
+      display: block; height: 150px; position: relative;
+      background: radial-gradient(circle at 50% 45%, rgba(191,255,0,0.22), transparent 60%), linear-gradient(135deg, #23231b, #0d0d0c);
+      display: grid; place-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .popup-thumb::after { content: 'DESIGNING LA DOLCE VITA'; position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font-family: var(--font-serif); font-size: 0.62rem; letter-spacing: 0.28em; color: var(--cream-light); }
+    .popup-play { width: 60px; height: 60px; border-radius: 50%; background: rgba(15,15,14,0.5); border: 1.5px solid var(--accent); display: grid; place-items: center; color: var(--accent); }
+    .popup-play svg { width: 22px; height: 22px; margin-left: 3px; }
+    .popup-body { padding: 1.6rem 1.8rem 1.8rem; text-align: center; }
+    .popup-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 0.8rem; }
+    .popup-pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s var(--ease-soft) infinite; }
+    .popup-title { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 500; line-height: 1.1; font-style: normal; }
+    .popup-title em { color: var(--accent); }
+    .popup-sub { color: var(--cream-mid); font-size: 0.9rem; margin: 0.55rem 0 1.3rem; }
+    .popup-meta { display: flex; gap: 0.7rem; justify-content: center; margin-bottom: 1.5rem; }
+    .popup-chip { min-width: 92px; padding: 0.65rem 0.5rem; background: rgba(191,255,0,0.06); border: 1px solid var(--line-strong); border-radius: 12px; }
+    .popup-chip .v { font-family: var(--font-serif); font-size: 1.35rem; color: var(--accent); line-height: 1; display: block; }
+    .popup-chip .k { font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-light); margin-top: 0.35rem; display: block; }
+    .popup-cta { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; background: var(--accent); color: var(--bg); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; padding: 0.9rem 1.6rem; border-radius: 100px; text-decoration: none; transition: transform .35s var(--ease), background .35s var(--ease); }
+    .popup-cta:hover { transform: scale(1.02); background: var(--accent-deep); }
+    .popup-cta svg { width: 16px; height: 16px; }
+    .popup-dismiss { display: block; margin: 0.9rem auto 0; background: none; border: none; cursor: pointer; color: var(--cream-light); font-family: var(--font-sans); font-size: 0.76rem; letter-spacing: 0.02em; transition: color .3s var(--ease); }
+    .popup-dismiss:hover { color: var(--cream); }
+    @media (prefers-reduced-motion: reduce) { .popup-pulse { animation: none; } }
+
+    /* ═══ OPTION 7 — Slide-in Toast (corner popup) ═══ */
+    .toast {
+      position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 200;
+      width: 340px; max-width: calc(100vw - 3rem);
+      background: linear-gradient(160deg, rgba(28,28,22,0.97), rgba(15,15,14,0.97));
+      border: 1px solid var(--line-strong); border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      overflow: hidden;
+      transform: translateY(140%); opacity: 0; visibility: hidden;
+      transition: transform .55s var(--ease), opacity .45s var(--ease), visibility .45s var(--ease);
+    }
+    .toast.open { transform: translateY(0); opacity: 1; visibility: visible; }
+    .toast-close {
+      position: absolute; top: 0.6rem; right: 0.6rem; z-index: 3;
+      width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+      background: rgba(15,15,14,0.55); border: 1px solid var(--line-strong);
+      color: var(--cream-mid); display: grid; place-items: center;
+      transition: color .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+    }
+    .toast-close:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+    .toast-close svg { width: 13px; height: 13px; }
+    .toast-link { display: flex; align-items: stretch; gap: 0; text-decoration: none; color: inherit; }
+    .toast-thumb {
+      flex-shrink: 0; width: 96px; position: relative;
+      background: radial-gradient(circle at 50% 50%, rgba(191,255,0,0.2), transparent 60%), linear-gradient(135deg, #23231b, #0d0d0c);
+      display: grid; place-items: center;
+    }
+    .toast-play { width: 40px; height: 40px; border-radius: 50%; background: rgba(15,15,14,0.5); border: 1.5px solid var(--accent); display: grid; place-items: center; color: var(--accent); transition: background .35s var(--ease), transform .35s var(--ease); }
+    .toast-play svg { width: 15px; height: 15px; margin-left: 2px; transition: color .35s var(--ease); }
+    .toast:hover .toast-play { background: var(--accent); transform: scale(1.08); }
+    .toast:hover .toast-play svg { color: var(--bg); }
+    .toast-body { padding: 0.95rem 1.1rem; display: flex; flex-direction: column; gap: 0.2rem; }
+    .toast-badge { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+    .toast-pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s var(--ease-soft) infinite; }
+    .toast-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 500; line-height: 1.15; font-style: normal; margin-top: 0.15rem; }
+    .toast-title em { color: var(--accent); }
+    .toast-meta { font-size: 0.74rem; color: var(--cream-mid); }
+    .toast-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: var(--cream); margin-top: 0.35rem; transition: color .3s var(--ease); }
+    .toast:hover .toast-cta { color: var(--accent); }
+    @media (prefers-reduced-motion: reduce) { .toast-pulse { animation: none; } .toast { transition: opacity .3s ease, visibility .3s ease; transform: none; } }
+
     @media (max-width: 720px) {
       .b1 { flex-direction: column; text-align: center; }
       .b1-text { text-align: center; }
@@ -183,6 +276,8 @@
     <button data-opt="3">03 · Date Chips</button>
     <button data-opt="4">04 · Slim Pill</button>
     <button data-opt="5">05 · Thumbnail</button>
+    <button data-opt="6">06 · Popup</button>
+    <button data-opt="7">07 · Toast</button>
     <span class="hint">Hover a banner to preview interaction · click to switch</span>
   </nav>
 
@@ -254,16 +349,92 @@
     </div>
   </section>
 
+  <!-- ════════ OPTION 6 — Dismissible Popup (click outside or × to close) ════════ -->
+  <div class="popup-overlay" id="popup-overlay" aria-hidden="true">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+      <button class="popup-close" id="popup-close" type="button" aria-label="Close announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <span class="popup-thumb">
+        <span class="popup-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <div class="popup-body">
+        <span class="popup-badge"><span class="popup-pulse"></span>New Season Premiere</span>
+        <h2 class="popup-title" id="popup-title">Designing <em>La Dolce Vita</em></h2>
+        <p class="popup-sub">A new season begins — join the premiere on YouTube.</p>
+        <div class="popup-meta">
+          <span class="popup-chip"><span class="v">21</span><span class="k">June</span></span>
+          <span class="popup-chip"><span class="v">11:00</span><span class="k">Romania · EET</span></span>
+        </div>
+        <a class="popup-cta" href="https://www.youtube.com/@georgianagogolan" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#0F0F0E"><path d="M8 5v14l11-7z"/></svg>
+          Watch on YouTube
+        </a>
+        <button class="popup-dismiss" id="popup-dismiss" type="button">Maybe later</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ OPTION 7 — Slide-in Toast (corner popup, dismissible) ════════ -->
+  <div class="toast" id="toast" role="dialog" aria-modal="false" aria-labelledby="toast-title" aria-hidden="true">
+    <button class="toast-close" id="toast-close" type="button" aria-label="Dismiss announcement">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <a class="toast-link" href="https://www.youtube.com/@georgianagogolan" target="_blank" rel="noopener">
+      <span class="toast-thumb">
+        <span class="toast-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="toast-body">
+        <span class="toast-badge"><span class="toast-pulse"></span>New Season</span>
+        <span class="toast-title" id="toast-title">Designing <em>La Dolce Vita</em></span>
+        <span class="toast-meta">Premieres June 21 · 11:00 (RO)</span>
+        <span class="toast-cta">Watch on YouTube →</span>
+      </span>
+    </a>
+  </div>
+
   <script>
     const btns = document.querySelectorAll('.switcher button');
     const variants = document.querySelectorAll('.banner-variant');
+    const overlay = document.getElementById('popup-overlay');
+    const toast = document.getElementById('toast');
+
+    function openPopup() { overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); }
+    function closePopup() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); }
+    function openToast() { toast.classList.add('open'); toast.setAttribute('aria-hidden', 'false'); }
+    function closeToast() { toast.classList.remove('open'); toast.setAttribute('aria-hidden', 'true'); }
+
     btns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         const opt = btn.getAttribute('data-opt');
         btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
-        variants.forEach(function (v) { v.classList.toggle('active', v.getAttribute('data-opt') === opt); });
+
+        // Reset all popups first
+        closePopup();
+        closeToast();
+
+        if (opt === '6') {
+          variants.forEach(function (v) { v.classList.remove('active'); });
+          openPopup();
+        } else if (opt === '7') {
+          variants.forEach(function (v) { v.classList.remove('active'); });
+          openToast();
+        } else {
+          variants.forEach(function (v) { v.classList.toggle('active', v.getAttribute('data-opt') === opt); });
+        }
       });
     });
+
+    // Dismiss popup: × button, "Maybe later", click outside the card, or Esc
+    document.getElementById('popup-close').addEventListener('click', closePopup);
+    document.getElementById('popup-dismiss').addEventListener('click', closePopup);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
+
+    // Dismiss toast: × button
+    document.getElementById('toast-close').addEventListener('click', closeToast);
+
+    // Esc closes either
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closePopup(); closeToast(); } });
   </script>
 </body>
 </html>
