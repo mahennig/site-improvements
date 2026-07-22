@@ -2,611 +2,72 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Competitive Research — Findings & Website Recommendations · Design Mindset Agency</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Design Mindset Website!!!</title>
 <style>
-  :root{
-    --black:#0C0C0A; --white:#FFFFFF; --off-white:#F8F8F6;
-    --gray-500:#6A6A68; --gray-300:#ADADAB; --gray-150:#D4D4D2; --gray-100:#ECECEA; --gray-50:#F4F4F2;
-    --lime:#C8FA28; --lime-hover:#B4E420;
-    --serif:'Cormorant Garamond',Georgia,serif;
-    --sans:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
-    --max-w:1100px;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;font-size:16px;}
-  body{font-family:var(--sans);background:var(--white);color:var(--black);line-height:1.7;-webkit-font-smoothing:antialiased;}
-  img{max-width:100%;display:block;}
-  a{color:inherit;}
-
-  /* ---------- Layout ---------- */
-  .wrap{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
-  section{padding:5rem 0;border-bottom:1px solid var(--gray-100);}
-  section:last-of-type{border-bottom:none;}
-
-  /* ---------- Type ---------- */
-  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.1;letter-spacing:-0.01em;}
-  h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.5rem;}
-  h3{font-size:clamp(1.4rem,2.4vw,1.9rem);margin:2.5rem 0 1rem;}
-  h4{font-size:1.2rem;margin-bottom:.5rem;font-weight:600;}
-  p{margin-bottom:1rem;color:#232320;}
-  .lead{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.4;color:var(--black);}
-  .eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-500);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
-  .eyebrow::before{content:"";width:28px;height:2px;background:var(--lime);display:inline-block;}
-  strong{font-weight:600;color:var(--black);}
-  em{font-style:italic;}
-  ul.bullets{list-style:none;margin:1rem 0 1.5rem;}
-  ul.bullets li{position:relative;padding-left:1.5rem;margin-bottom:.65rem;color:#232320;}
-  ul.bullets li::before{content:"";position:absolute;left:0;top:.65em;width:7px;height:7px;background:var(--lime);}
-
-  /* ---------- Hero ---------- */
-  .hero{background:var(--black);color:var(--white);padding:6rem 0 5rem;}
-  .hero .eyebrow{color:var(--lime);}
-  .hero .eyebrow::before{background:var(--lime);}
-  .hero h1{font-size:clamp(2.6rem,6vw,4.8rem);margin-bottom:1.5rem;}
-  .hero p{color:rgba(255,255,255,.72);max-width:640px;font-size:1.05rem;}
-  .hero .meta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:2rem;font-size:.8rem;letter-spacing:.05em;color:rgba(255,255,255,.55);}
-  .hero .meta b{color:var(--lime);font-weight:500;display:block;font-size:1.4rem;font-family:var(--serif);margin-bottom:.15rem;}
-
-  /* ---------- TOC ---------- */
-  .toc{background:var(--off-white);padding:2.5rem 0;border-bottom:1px solid var(--gray-100);}
-  .toc ol{list-style:none;counter-reset:t;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.5rem 2rem;}
-  .toc li{counter-increment:t;font-size:.9rem;padding:.4rem 0;border-bottom:1px solid transparent;transition:.2s;}
-  .toc li::before{content:counter(t,decimal-leading-zero);color:var(--lime);font-weight:600;margin-right:.7rem;font-size:.75rem;}
-  .toc a:hover{color:var(--gray-500);}
-
-  /* ---------- Cards / grids ---------- */
-  .grid{display:grid;gap:1.5rem;}
-  .grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
-  .grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
-  .card{background:var(--off-white);border:1px solid var(--gray-100);padding:1.8rem;}
-  .card h4{font-family:var(--sans);font-weight:600;font-size:.95rem;letter-spacing:.02em;}
-  .card p{font-size:.92rem;margin-bottom:0;}
-  .card .src{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.8rem;}
-
-  /* consensus list */
-  .consensus{border-left:2px solid var(--lime);padding-left:1.5rem;margin:1.5rem 0;}
-
-  /* ---------- Source chips ---------- */
-  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0;}
-  .chip{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .8rem;border:1px solid var(--gray-150);border-radius:100px;color:var(--gray-500);}
-  .chip b{color:var(--black);font-weight:600;}
-
-  /* ---------- Table ---------- */
-  table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.88rem;}
-  th,td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--gray-100);vertical-align:top;}
-  th{font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500);font-weight:600;}
-  tbody tr:hover{background:var(--off-white);}
-  td strong{white-space:nowrap;}
-
-  /* ---------- Before / After ---------- */
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0;}
-  .ba>div{padding:1.5rem;border:1px solid var(--gray-150);}
-  .ba .before{background:var(--gray-50);}
-  .ba .after{background:#0C0C0A;color:var(--white);border-color:#0C0C0A;}
-  .ba .tag{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:.9rem;display:inline-block;}
-  .ba .before .tag{color:#B4544E;}
-  .ba .after .tag{color:var(--lime);}
-  .ba p{margin-bottom:0;font-size:.9rem;}
-  .ba .after p{color:rgba(255,255,255,.8);}
-
-  /* ---------- Options ---------- */
-  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0;}
-  .option{border:1px solid var(--gray-150);padding:1.6rem;position:relative;display:flex;flex-direction:column;}
-  .option .num{font-family:var(--serif);font-size:2.4rem;color:var(--lime);line-height:1;margin-bottom:.6rem;}
-  .option h4{font-family:var(--sans);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500);}
-  .option .sample{font-family:var(--serif);font-size:1.3rem;line-height:1.25;color:var(--black);margin:.6rem 0 1rem;}
-  .option .why{font-size:.85rem;color:#3a3a37;margin-top:auto;}
-  .option .why b{color:var(--black);}
-  .option.rec{border-color:var(--black);box-shadow:0 0 0 1px var(--black);}
-  .option.rec::after{content:"Recommended";position:absolute;top:-.7rem;left:1.4rem;background:var(--lime);color:var(--black);font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .6rem;}
-
-  /* ---------- Mockup (mini website preview) ---------- */
-  .mock{border:1px solid var(--gray-150);border-radius:6px;overflow:hidden;margin:1.5rem 0;box-shadow:0 20px 50px -25px rgba(0,0,0,.25);}
-  .mock__bar{background:var(--gray-50);border-bottom:1px solid var(--gray-150);padding:.6rem 1rem;display:flex;gap:.4rem;align-items:center;}
-  .mock__bar span{width:11px;height:11px;border-radius:50%;background:var(--gray-150);}
-  .mock__bar small{margin-left:1rem;color:var(--gray-500);font-size:.72rem;letter-spacing:.04em;}
-  .mock__hero{background:var(--black);color:#fff;padding:3rem 2.2rem;position:relative;overflow:hidden;}
-  .mock__hero .label{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;}
-  .mock__hero .rule{width:44px;height:3px;background:var(--lime);margin:0 0 1.2rem;}
-  .mock__hero h3{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,2.9rem);color:#fff;margin:0 0 1rem;max-width:15ch;line-height:1.05;}
-  .mock__hero p{color:rgba(255,255,255,.7);max-width:44ch;font-size:.9rem;margin-bottom:1.6rem;}
-  .mock__btns{display:flex;gap:.8rem;flex-wrap:wrap;}
-  .mbtn{font-size:.78rem;letter-spacing:.05em;padding:.65rem 1.2rem;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:2px;}
-  .mbtn.solid{background:var(--lime);color:var(--black);border-color:var(--lime);font-weight:600;}
-
-  /* services mock */
-  .svc-list{display:grid;gap:0;}
-  .svc-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:baseline;padding:1.1rem 2.2rem;border-bottom:1px solid var(--gray-100);}
-  .svc-row:last-child{border-bottom:none;}
-  .svc-row .no{font-family:var(--serif);color:var(--gray-300);font-size:1.1rem;}
-  .svc-row .nm{font-family:var(--serif);font-size:1.35rem;}
-  .svc-row .ds{font-size:.82rem;color:var(--gray-500);grid-column:2;}
-  .svc-row .lead-tag{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--lime);color:var(--black);padding:.2rem .5rem;font-weight:600;font-family:var(--sans);align-self:center;}
-
-  /* ---------- Callout ---------- */
-  .callout{background:var(--black);color:var(--white);padding:2.5rem;margin:2rem 0;border-radius:4px;}
-  .callout .eyebrow{color:var(--lime);}
-  .callout .eyebrow::before{background:var(--lime);}
-  .callout p{color:rgba(255,255,255,.82);}
-  .callout p:last-child{margin-bottom:0;}
-  .callout.warn{background:#1a1712;border-left:3px solid #E0B341;}
-  .callout.warn .eyebrow{color:#E0B341;}
-  .callout.warn .eyebrow::before{background:#E0B341;}
-
-  /* ---------- Priority / steps ---------- */
-  .steps{counter-reset:s;margin-top:1.5rem;}
-  .step{counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid var(--gray-100);}
-  .step::before{content:counter(s);font-family:var(--serif);font-size:2rem;color:var(--lime);line-height:1;}
-  .step h4{font-family:var(--sans);font-size:1rem;font-weight:600;margin-bottom:.3rem;}
-  .step p{font-size:.9rem;margin-bottom:0;color:#3a3a37;}
-  .step .impact{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);margin-top:.4rem;}
-  .step .impact b{color:var(--black);}
-
-  /* footer */
-  footer{background:var(--black);color:rgba(255,255,255,.6);padding:3rem 0;font-size:.82rem;}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-  footer b{color:var(--lime);font-weight:500;}
-
-  .fyi{font-size:.8rem;color:var(--gray-500);font-style:italic;margin-top:.5rem;}
-
-  /* ---------- Case-study outline / wireframe ---------- */
-  .wire{border:1px solid var(--gray-150);border-radius:6px;overflow:hidden;margin:1.5rem 0;}
-  .wire__row{display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--gray-100);}
-  .wire__row:last-child{border-bottom:none;}
-  .wire__label{background:var(--black);color:#fff;padding:1.3rem 1.3rem;display:flex;flex-direction:column;gap:.3rem;}
-  .wire__label .n{font-family:var(--serif);color:var(--lime);font-size:1.4rem;line-height:1;}
-  .wire__label .t{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;}
-  .wire__label .words{font-size:.66rem;color:rgba(255,255,255,.45);letter-spacing:.06em;}
-  .wire__body{padding:1.3rem 1.5rem;background:#fff;}
-  .wire__body p{margin-bottom:.5rem;font-size:.9rem;}
-  .wire__body p:last-child{margin-bottom:0;}
-  .wire__body .ex{font-family:var(--serif);font-size:1.15rem;line-height:1.35;color:var(--black);border-left:2px solid var(--lime);padding-left:1rem;margin:.4rem 0;}
-  .wire__body .note{font-size:.78rem;color:var(--gray-500);}
-  .pullquote{font-family:var(--serif);font-size:1.6rem;line-height:1.3;color:var(--black);margin:.6rem 0;}
-  .pullquote cite{display:block;font-family:var(--sans);font-size:.75rem;font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-top:.6rem;}
-  .checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.6rem 1.5rem;margin:1.2rem 0;}
-  .checklist div{font-size:.85rem;padding-left:1.6rem;position:relative;color:#3a3a37;}
-  .checklist div::before{content:"\2713";position:absolute;left:0;color:var(--lime);font-weight:700;}
-
-  @media(max-width:680px){
-    .wire__row{grid-template-columns:1fr;}
-    .ba{grid-template-columns:1fr;}
-    section{padding:3.5rem 0;}
-    .svc-row{grid-template-columns:auto 1fr;}
-    .svc-row .lead-tag{grid-column:2;justify-self:start;}
-  }
+body { background: teal; font-family: "Comic Sans MS", cursive; color: yellow; text-align: center; }
+h1 { color: red; font-size: 60px; text-decoration: underline; }
+h2 { color: lime; }
+p { font-size: 20px; color: white; }
+img { border: 5px dotted magenta; }
+a { color: orange; font-size: 22px; }
+table { margin: auto; border: 3px solid black; background: purple; }
+td { padding: 10px; color: white; border: 1px solid white; }
+.box { background: navy; border: 4px ridge silver; width: 60%; margin: 20px auto; padding: 15px; }
+button { background: hotpink; color: black; font-size: 24px; padding: 10px; }
 </style>
 </head>
-<body>
+<body bgcolor="teal" text="yellow">
 
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Internal Strategy Memo · July 2026</div>
-    <h1>Competitive research:<br>findings &amp; a website plan.</h1>
-    <p>A synthesis of five independent competitive analyses of Design Mindset Agency, plus concrete recommendations for how the website should evolve. Where the right answer is a judgment call, three options are offered.</p>
-    <div class="meta">
-      <div><b>5</b> research documents analysed</div>
-      <div><b>40+</b> benchmark agencies</div>
-      <div><b>1</b> clear whitespace</div>
-    </div>
-  </div>
-</header>
+<marquee behavior="alternate" scrollamount="12"><h1>~*~ DESIGN MINDSET ~*~</h1></marquee>
 
-<!-- TOC -->
-<nav class="toc">
-  <div class="wrap">
-    <ol>
-      <li><a href="#summary">The one-sentence takeaway</a></li>
-      <li><a href="#consensus">Where all five agree</a></li>
-      <li><a href="#diverge">Where they diverge</a></li>
-      <li><a href="#quality">My read on the research</a></li>
-      <li><a href="#site">Current site: what to fix</a></li>
-      <li><a href="#hero-options">Hero headline — 3 options</a></li>
-      <li><a href="#position-options">Positioning — 3 options</a></li>
-      <li><a href="#services-mock">Services, redesigned</a></li>
-      <li><a href="#plan">Prioritised action plan</a></li>
-      <li><a href="#new-page">The new page: content outline</a></li>
-    </ol>
-  </div>
-</nav>
+<blink><h2>WE DO MARKETING FOR DESIGN BRANDS !!!</h2></blink>
 
-<!-- 1. SUMMARY -->
-<section id="summary">
-  <div class="wrap">
-    <div class="eyebrow">The takeaway</div>
-    <p class="lead">Your site sells <em>outputs</em> first — films, Instagram, fair coverage. The premium market rewards agencies that sell <em>strategy</em> first and treat execution as the proof. Closing that gap is the whole game.</p>
-    <p style="margin-top:2rem;max-width:70ch;">All five documents — produced independently by different tools — converge on the same destination: reposition Design Mindset from a <strong>premium content-production studio</strong> into <strong>the editorial bureau for premium interior-design brands</strong>. It is a re-framing, not a rebuild: same services, different hierarchy, different sale.</p>
-    <div class="chips">
-      <span class="chip"><b>Perplexity</b> · competitive scan</span>
-      <span class="chip"><b>Claude</b> · landscape &amp; positioning</span>
-      <span class="chip"><b>GPT</b> · global benchmark</span>
-      <span class="chip"><b>Gemini</b> · boutique branding strategy</span>
-      <span class="chip"><b>RO doc</b> · problem-framing analysis</span>
-    </div>
-  </div>
-</section>
+<hr>
 
-<!-- 2. CONSENSUS -->
-<section id="consensus">
-  <div class="wrap">
-    <div class="eyebrow">High-confidence signals</div>
-    <h2>Where all five agree</h2>
-    <p style="max-width:68ch;">When five independent analyses land in the same place, the direction is trustworthy. These are the points of consensus.</p>
+<p>Welcome 2 our website. we are the BEST agency for interior design brands.</p>
+<p><b>One Industry. Total Focus.</b> (click stuff below)</p>
 
-    <h3>The whitespace: high strategy × high cinematic content</h3>
-    <p>Plotted on two axes — strategic depth vs. editorial/cinematic output — the market has four quadrants. The top-right (both high) is almost empty. The only real-world occupant is <strong>Winkreative + Monocle</strong>, and it doesn't exist for the interior-design vertical. That is your defensible position.</p>
-    <div class="consensus">
-      <p style="margin-bottom:.4rem;"><strong>Same idea, five phrasings:</strong></p>
-      <ul class="bullets" style="margin-top:.5rem;">
-        <li><strong>Gemini:</strong> "boutique strategic office &amp; editorial media house"</li>
-        <li><strong>Claude:</strong> "the editorial bureau for European interior-design brands"</li>
-        <li><strong>GPT:</strong> "strategy-first storytelling partner for premium interior, furniture &amp; lighting brands"</li>
-        <li><strong>Perplexity:</strong> "strategic editorial marketing for premium design brands"</li>
-        <li><strong>RO doc:</strong> "how you frame the problem <em>is</em> how you sell yourself"</li>
-      </ul>
-    </div>
+<hr>
 
-    <h3>Your unique, defensible differentiators</h3>
-    <div class="grid grid-2" style="margin-top:1.5rem;">
-      <div class="card"><h4>On-the-ground fair bureau</h4><p>A named editorial presence at Milano Design Week, Salone, ISH Frankfurt, Maison&amp;Objet — not a booth videographer. No competitor owns the full fair-to-market journey.</p></div>
-      <div class="card"><h4>A named host-journalist</h4><p>Reposition Georgiana from "host" to <em>editorial correspondent / design journalist</em>. Winkreative, Camron and Pentagram all humanise the work through named people.</p></div>
-      <div class="card"><h4>Cinema, not content</h4><p>The 5–12 minute documentary is the core unit. Reels are <em>derivatives</em> of it — never the headline. This inverts the industry norm.</p></div>
-      <div class="card"><h4>Category fluency</h4><p>Knowing "the difference between Vitra and Vitsœ" — contract vs. residential, German vs. Italian craft codes. Generalists need six months to learn what you already know.</p></div>
-    </div>
+<div class="box">
+<h2>WHAT WE DO:</h2>
+<ul style="text-align:left; display:inline-block; color:white;">
+<li>Influencer Marketing</li>
+<li>Strategic Growth</li>
+<li>Branding &amp; Digital</li>
+<li>Social Media</li>
+<li>Video Production</li>
+<li>Strategy</li>
+</ul>
+</div>
 
-    <h3>The recommended service architecture</h3>
-    <p>Every document recommends a 3–5 pillar structure, <strong>led by strategy</strong>, with your current services renamed and reordered:</p>
-    <table>
-      <thead><tr><th>#</th><th>New pillar</th><th>Was</th><th>Sold as</th></tr></thead>
-      <tbody>
-        <tr><td><strong>1</strong></td><td><strong>Brand Direction</strong> <span style="color:var(--gray-500)">(new lead)</span></td><td>Strategy (4th item)</td><td>Foundation project · $30–80K</td></tr>
-        <tr><td><strong>2</strong></td><td><strong>Brand Episodes</strong></td><td>Cinematic YouTube Features</td><td>Series of 3–6 · $15–40K each</td></tr>
-        <tr><td><strong>3</strong></td><td><strong>Fair Bureau</strong></td><td>Design Fair Coverage</td><td>Per-fair $20–50K / retainer $150–400K/yr</td></tr>
-        <tr><td><strong>4</strong></td><td><strong>Editorial Social</strong></td><td>Instagram &amp; Social Campaigns</td><td>Retainer $6–15K/mo · <em>never standalone</em></td></tr>
-        <tr><td><strong>5</strong></td><td><strong>Brand Stewardship</strong> <span style="color:var(--gray-500)">(new)</span></td><td>—</td><td>Retainer $4–12K/mo</td></tr>
-      </tbody>
-    </table>
+<hr>
 
-    <h3>Language to kill</h3>
-    <div class="ba">
-      <div class="before"><span class="tag">Downgrades you</span><p>"Promoting" · "Instagram Campaigns" · "reach" · "leads / funnels / ROAS" · platform names · "we do video for designers"</p></div>
-      <div class="after"><span class="tag">Upgrades you</span><p>"Distribution / Amplification" · "Editorial Social Ecosystems" · "specification &amp; desire" · "narrative that compounds" · name the fair, the city, the material</p></div>
-    </div>
-  </div>
-</section>
+<h2>OUR TEAM:::</h2>
+<table>
+<tr><td><b>Georgiana</b></td><td>Founder</td></tr>
+<tr><td><b>Katty</b></td><td>Social Media</td></tr>
+<tr><td><b>Elena</b></td><td>Marketing</td></tr>
+<tr><td><b>Ioana</b></td><td>Graphics</td></tr>
+<tr><td><b>Markus</b></td><td>Web Guy</td></tr>
+</table>
 
-<!-- 3. DIVERGE -->
-<section id="diverge">
-  <div class="wrap">
-    <div class="eyebrow">The real decisions</div>
-    <h2>Where they diverge</h2>
-    <p style="max-width:68ch;">Three genuine forks the documents disagree on — these are choices you need to make deliberately, not defaults to accept.</p>
-    <div class="grid grid-3" style="margin-top:2rem;">
-      <div class="card"><div class="src">Fork 01</div><h4>Geography</h4><p>Perplexity uniquely pushes a <strong>CEE-craft → Western-European-demand bridge</strong> and naming <strong>specifiers</strong> (architects, procurement, showrooms) as the audience. The others stay pan-European. This changes your hero copy.</p></div>
-      <div class="card"><div class="src">Fork 02</div><h4>How purist</h4><p>Gemini says drop <strong>all</strong> social/performance work. Claude is realistic: don't over-claim strategy without proof — build 2–3 real strategy case studies <em>first</em>. You have content cases, not strategy cases.</p></div>
-      <div class="card"><div class="src">Fork 03</div><h4>Sustainability</h4><p>Gemini leans hard on "conscious living" as a pillar; the others barely mention it. A positioning choice, not a consensus. Don't adopt it just because one doc emphasised it.</p></div>
-    </div>
-  </div>
-</section>
+<hr>
 
-<!-- 4. QUALITY -->
-<section id="quality">
-  <div class="wrap">
-    <div class="eyebrow">My read on the research</div>
-    <h2>How much to trust it</h2>
-    <div class="grid grid-2">
-      <div>
-        <h4 style="color:#2e7d32;">Strengths</h4>
-        <ul class="bullets">
-          <li>Five-way convergence de-risks the core direction.</li>
-          <li>40+ agencies benchmarked; strong breadth.</li>
-          <li>The Winkreative/Monocle insight and fair-bureau wedge are sharp and correct.</li>
-          <li>Actionable — service names, pricing tiers, tone guidance.</li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#B4544E;">Handle with care</h4>
-        <ul class="bullets">
-          <li><strong>Numbers are soft.</strong> Revenue, staff counts and pricing are largely <em>inferred</em>. Verify before quoting externally.</li>
-          <li><strong>They analysed an older site</strong> ("...products into desired brands"). Some critiques are already partly addressed.</li>
-          <li><strong>Echo-chamber risk.</strong> Heavy overlap is reassuring <em>and</em> self-reinforcing.</li>
-          <li><strong>Demand untested.</strong> None validates that these brands actually have $30–80K strategy budgets.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout warn">
-      <div class="eyebrow">One caution</div>
-      <p>The "drop all social &amp; one-offs" purism may starve early cash flow. Winkreative itself is noted as chronically unprofitable — the hybrid model is hard to scale. Pragmatically, keep tactical work as an on-ramp while you build the premium proof.</p>
-    </div>
-  </div>
-</section>
+<marquee scrollamount="20" direction="right"><p>*** CLIENTS: B&amp;B Italia * Baxter * Viabizzuno * Tonino Lamborghini * Gessi ***</p></marquee>
 
-<!-- 5. CURRENT SITE -->
-<section id="site">
-  <div class="wrap">
-    <div class="eyebrow">Applied to your site</div>
-    <h2>What you've already done — and what's left</h2>
-    <div class="grid grid-2">
-      <div>
-        <h4 style="color:#2e7d32;">Already on-strategy ✓</h4>
-        <ul class="bullets">
-          <li>Editorial serif + chartreuse accent, generous whitespace.</li>
-          <li>Cinematic full-bleed hero.</li>
-          <li>Hero copy already improved vs. the version the docs critiqued.</li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#B4544E;">Still misaligned ✗</h4>
-        <ul class="bullets">
-          <li>Services lead with platforms (YouTube / Instagram) — reorder strategy-first.</li>
-          <li>Process step "Promoting" — rename to Distribution.</li>
-          <li>Meta / OG copy still says "Instagram campaigns".</li>
-          <li>No long-form case studies — proof is stats + reels.</li>
-          <li>"Get in Touch" everywhere — make CTAs editorial.</li>
-          <li>Lime overused — use as a sparing signature.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">
-      <div class="eyebrow">The single highest-leverage change</div>
-      <p>Rewrite one project (start with B&amp;B Italia or Gessi) as a <strong>1,500-word editorial case study</strong> — problem → insight → work-as-answer, with named collaborators and a pull-quote. Every document agrees this moves perceived sophistication more than any visual update, and it builds the strategy "proof" you currently lack.</p>
-    </div>
-  </div>
-</section>
+<hr>
 
-<!-- 6. HERO OPTIONS -->
-<section id="hero-options">
-  <div class="wrap">
-    <div class="eyebrow">Judgment call · 3 options</div>
-    <h2>Hero headline</h2>
-    <p style="max-width:68ch;">Your current line — <em>"We turn designed spaces into cinematic brand stories"</em> — is good, but still leads with the deliverable (cinematic stories). Three directions, depending on how boldly you want to claim the strategy territory:</p>
+<div class="box">
+<h2>CONTACT US!!!1!</h2>
+<p>email: <a href="mailto:gogolangeorgiana@gmail.com">gogolangeorgiana@gmail.com</a></p>
+<button onclick="alert('thank u we will call u maybe')">WORK WITH US &gt;&gt;&gt;</button>
+</div>
 
-    <div class="options">
-      <div class="option">
-        <div class="num">A</div>
-        <h4>Editorial authority</h4>
-        <p class="sample">"An editorial bureau for the interior-design world."</p>
-        <p class="why"><b>Boldest.</b> Claims the whitespace outright. Best if you commit to the full repositioning and build strategy proof. Closest to the docs' consensus.</p>
-      </div>
-      <div class="option rec">
-        <div class="num">B</div>
-        <h4>Strategy + craft blend</h4>
-        <p class="sample">"We make interior-design brands architects choose to remember."</p>
-        <p class="why"><b>Balanced.</b> Names the audience (architects/specifiers), implies strategy &amp; desire, keeps cinematic craft implicit. Safe to ship today without over-claiming.</p>
-      </div>
-      <div class="option">
-        <div class="num">C</div>
-        <h4>Fair-led wedge</h4>
-        <p class="sample">"Present at every fair that matters. Building the brands that get remembered."</p>
-        <p class="why"><b>Most differentiated.</b> Leads with your unique moat (the fair bureau). Best if fair coverage becomes the flagship offer.</p>
-      </div>
-    </div>
-    <p class="fyi">Recommendation: <strong>Option B</strong> — it upgrades positioning without writing a cheque your case studies can't yet cash (per Claude's caution).</p>
+<hr>
 
-    <h3>Preview — Option B in place</h3>
-    <div class="mock">
-      <div class="mock__bar"><span></span><span></span><span></span><small>designmindset.agency</small></div>
-      <div class="mock__hero">
-        <div class="label">Editorial bureau · Interior design</div>
-        <div class="rule"></div>
-        <h3>We make interior-design brands architects choose to remember.</h3>
-        <p>Strategy, cinematic storytelling and on-the-ground fair journalism for premium furniture, lighting and interior brands across Europe.</p>
-        <div class="mock__btns">
-          <span class="mbtn solid">View Selected Work</span>
-          <span class="mbtn">Start a Conversation →</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7. POSITIONING OPTIONS -->
-<section id="position-options">
-  <div class="wrap">
-    <div class="eyebrow">Judgment call · 3 options</div>
-    <h2>Positioning statement</h2>
-    <p style="max-width:68ch;">The one-liner that sits under your logo and in your meta description. The three options trade <strong>breadth</strong> for <strong>differentiation</strong>:</p>
-    <div class="options">
-      <div class="option">
-        <div class="num">A</div>
-        <h4>Pan-European editorial</h4>
-        <p class="sample">"The editorial bureau for European interior-design brands."</p>
-        <p class="why"><b>Widest reach.</b> Safe, credible, matches four of five docs. Slightly generic — several London studios could claim it.</p>
-      </div>
-      <div class="option rec">
-        <div class="num">B</div>
-        <h4>Specifier-focused</h4>
-        <p class="sample">"We turn design quality into specification — for the architects, editors and buyers who decide."</p>
-        <p class="why"><b>Sharpest commercially.</b> Names the audience nobody else names (specifiers). Connects taste to a purchase decision. Perplexity's strongest insight.</p>
-      </div>
-      <div class="option">
-        <div class="num">C</div>
-        <h4>CEE → West bridge</h4>
-        <p class="sample">"Translating European craft into the language buyers, architects and editors trust."</p>
-        <p class="why"><b>Most ownable</b> if the CEE-manufacturing angle is real for you. Riskier — narrows the market and needs proof points from that region.</p>
-      </div>
-    </div>
-    <p class="fyi">Recommendation: <strong>Option B</strong> for the headline positioning, with the fair bureau as the proof it's true. Decide the CEE question (Fork 01) before committing to C.</p>
-  </div>
-</section>
-
-<!-- 8. SERVICES MOCK -->
-<section id="services-mock">
-  <div class="wrap">
-    <div class="eyebrow">How it could look</div>
-    <h2>Services, redesigned</h2>
-    <p style="max-width:68ch;">Same work you do today, restructured strategy-first with the platform names removed. This is the section with the biggest gap between your current site and the research.</p>
-
-    <div class="ba" style="margin-top:2rem;">
-      <div class="before">
-        <span class="tag">Now — output-first</span>
-        <p>01 · Cinematic YouTube Features<br>02 · Instagram &amp; Social Campaigns<br>03 · Design Fair Coverage<br>04 · Brand Storytelling Strategy</p>
-      </div>
-      <div class="after">
-        <span class="tag">Proposed — strategy-first</span>
-        <p>01 · Brand Direction<br>02 · Brand Episodes<br>03 · Fair Bureau<br>04 · Editorial Social<br>05 · Brand Stewardship</p>
-      </div>
-    </div>
-
-    <h3>Preview — the redesigned section</h3>
-    <div class="mock">
-      <div class="mock__bar"><span></span><span></span><span></span><small>designmindset.agency / services</small></div>
-      <div style="background:#fff;padding:2.2rem 0 .5rem;">
-        <div style="padding:0 2.2rem 1.4rem;">
-          <div style="font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);">What we do</div>
-          <div style="font-family:var(--serif);font-size:1.9rem;margin-top:.4rem;">Strategy first. Everything else is proof.</div>
-        </div>
-        <div class="svc-list">
-          <div class="svc-row"><span class="no">01</span><span class="nm">Brand Direction</span><span class="lead-tag">Lead</span><span class="ds">Positioning, narrative architecture, tone of voice, annual editorial &amp; fair-presence strategy.</span></div>
-          <div class="svc-row"><span class="no">02</span><span class="nm">Brand Episodes</span><span></span><span class="ds">Documentary-grade brand films, 5–12 min, sold in series — the long-form layer reels can't replicate.</span></div>
-          <div class="svc-row"><span class="no">03</span><span class="nm">Fair Bureau</span><span></span><span class="ds">On-site editorial production at Milano, Salone, ISH &amp; Maison&amp;Objet, with a named host-journalist.</span></div>
-          <div class="svc-row"><span class="no">04</span><span class="nm">Editorial Social</span><span></span><span class="ds">Reels, stories and interviews — always derivatives of the episode and the fair, never standalone.</span></div>
-          <div class="svc-row"><span class="no">05</span><span class="nm">Brand Stewardship</span><span></span><span class="ds">Ongoing brand-direction partnership: quarterly strategy, narrative evolution, fair-cycle planning.</span></div>
-        </div>
-      </div>
-    </div>
-    <p class="fyi">The lime chip on "Brand Direction" is the only accent in the section — an example of using the colour as a sparing signal, not decoration.</p>
-  </div>
-</section>
-
-<!-- 9. PLAN -->
-<section id="plan">
-  <div class="wrap">
-    <div class="eyebrow">What to do next</div>
-    <h2>Prioritised action plan</h2>
-    <div class="steps">
-      <div class="step">
-        <div>
-          <h4>Reorder &amp; rename services, purge platform language</h4>
-          <p>Rebuild the Services section strategy-first (mock above) and remove "Instagram / YouTube / Promoting" everywhere — including <code>&lt;meta&gt;</code> and OpenGraph tags.</p>
-          <div class="impact"><b>Effort:</b> Low · <b>Impact:</b> High · site-wide copy edit</div>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>Write one editorial case study</h4>
-          <p>Start with B&amp;B Italia or Gessi. 1,500 words, essay format, named collaborators, one pull-quote. This is the strategy "proof" the whole repositioning depends on.</p>
-          <div class="impact"><b>Effort:</b> Medium · <b>Impact:</b> Highest · new page/template</div>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>Decide the geography fork, then set the hero &amp; positioning</h4>
-          <p>Pan-European vs. CEE→West + specifiers. This choice determines Hero Option B vs. C and Positioning Option B vs. C — so decide it before rewriting the top of the page.</p>
-          <div class="impact"><b>Effort:</b> Decision · <b>Impact:</b> High · unblocks copy</div>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>Refine hero, CTAs &amp; accent usage</h4>
-          <p>Ship the chosen hero line, swap "Get in Touch" for editorial CTAs ("Read the case study", "See the work from Salone 2025"), and reduce lime to a single signature per section.</p>
-          <div class="impact"><b>Effort:</b> Low · <b>Impact:</b> Medium · polish</div>
-        </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>Later — publish a proprietary editorial artefact</h4>
-          <p>A quarterly "Bureau Notes" PDF/web edition. Converts you from "agency that does content" into "the publication that matters in this category." The long-game authority move.</p>
-          <div class="impact"><b>Effort:</b> High · <b>Impact:</b> Compounding · future</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10. NEW PAGE OUTLINE -->
-<section id="new-page">
-  <div class="wrap">
-    <div class="eyebrow">Step 2, in detail</div>
-    <h2>The new page: an editorial case study</h2>
-    <p style="max-width:70ch;">This is the single highest-leverage build. Below is the full content structure for one flagship case study — the format every benchmark agency (Pentagram, Here Design, Winkreative) uses. Written as a <strong>1,500-word editorial essay</strong>, not a portfolio tile. Example copy uses <strong>Gessi</strong> as the subject; swap for B&amp;B Italia or Baxter.</p>
-
-    <div class="callout">
-      <div class="eyebrow">The governing rule</div>
-      <p>Open with the <strong>strategic question</strong>, walk through the <strong>thinking</strong>, then reveal the work as the <strong>answer</strong>. Never lead with the film. The reader should feel they're reading a design magazine, not a sales deck.</p>
-    </div>
-
-    <h3>Section-by-section wireframe</h3>
-    <div class="wire">
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">01</span><span class="t">Editorial hero</span><span class="words">~40 words</span></div>
-        <div class="wire__body">
-          <p class="note">Full-bleed still from the film. Category label, title as a statement, one-line dek. No nav clutter.</p>
-          <p class="ex">“How a 330-year-old fittings house became the brand architects specify first.”</p>
-          <p class="note">Meta line: <em>Gessi · Brand Direction + Brand Episode · Milano Design Week 2025</em></p>
-        </div>
-      </div>
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">02</span><span class="t">The challenge</span><span class="words">~200 words</span></div>
-        <div class="wire__body">
-          <p>Set the strategic problem in the client's world — not “they needed a video.” Name the tension: a heritage manufacturer with exceptional product but a brand read as a catalogue, invisible to the architects who specify.</p>
-          <p class="note">End on the question the whole project answers: <em>“How do you make a tap a cultural object?”</em></p>
-        </div>
-      </div>
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">03</span><span class="t">The insight</span><span class="words">~250 words</span></div>
-        <div class="wire__body">
-          <p>The strategic turn — this is what separates you from a production house. The category fluency on display: contract vs. residential, the specifier's decision psychology, why material story beats feature lists.</p>
-          <p class="pullquote">“Architects don't specify products. They specify confidence.”<cite>Georgiana Gogolan · Editorial Director</cite></p>
-        </div>
-      </div>
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">04</span><span class="t">The work</span><span class="words">~400 words + media</span></div>
-        <div class="wire__body">
-          <p>Now — and only now — the film, stills and social derivatives, framed as the <em>expression</em> of the strategy above. Embedded episode, 3–4 stills, a short gallery from the fair floor.</p>
-          <p class="note">Caption each asset with intent, not description: <em>“Shot at dawn before the halls opened — the product as ritual, not merchandise.”</em></p>
-        </div>
-      </div>
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">05</span><span class="t">The outcome</span><span class="words">~150 words</span></div>
-        <div class="wire__body">
-          <p>Results framed editorially, not as a metrics dashboard. Lead with the shift in perception; support with numbers. “View what changed,” not “look what we made.”</p>
-          <p class="note">e.g. <em>195K organic views · featured in Domus · 3 new architect-studio relationships</em> — woven into prose, not a stat bar.</p>
-        </div>
-      </div>
-      <div class="wire__row">
-        <div class="wire__label"><span class="n">06</span><span class="t">Credits &amp; next</span><span class="words">~60 words</span></div>
-        <div class="wire__body">
-          <p>Name every collaborator — DOP, sound designer, host, strategist. Premium signal. Close with an editorial CTA and a link to the next case study, not a contact form.</p>
-          <p class="note">CTA: <em>“Read the next study → Baxter at Salone 2025”</em></p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Non-negotiables for the page</h3>
-    <div class="checklist">
-      <div>Long-form prose (1,200–1,800 words)</div>
-      <div>At least one named pull-quote</div>
-      <div>Full collaborator credits</div>
-      <div>Strategic question opens the page</div>
-      <div>Film appears in section 4, never section 1</div>
-      <div>Results as narrative, not a stat wall</div>
-      <div>Editorial CTA (no “Get in Touch”)</div>
-      <div>Generous whitespace, single lime accent</div>
-    </div>
-
-    <h3>How it plugs into the site</h3>
-    <div class="grid grid-3">
-      <div class="card"><div class="src">Template</div><h4>One reusable layout</h4><p>Build it once as <code>work/[slug].html</code>. Each new project is a content fill, not a new design.</p></div>
-      <div class="card"><div class="src">Link path</div><h4>From the Work grid</h4><p>The homepage “Selected Work” tiles link into these pages — the tile is the trailer, the page is the film.</p></div>
-      <div class="card"><div class="src">Volume</div><h4>Curate 4–6, not 20</h4><p>Fewer, better-told studies read as more selective — exactly the premium signal the research calls for.</p></div>
-    </div>
-    <p class="fyi">Recommendation: build the template and fill the first study (Gessi or B&amp;B Italia) before touching hero/positioning copy — it's the proof that makes the new claims credible.</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div><b>Design Mindset Agency</b> — Competitive research synthesis</div>
-    <div>Sources: Perplexity · Claude · GPT · Gemini · RO analysis · 8 July 2026</div>
-  </div>
-</footer>
+<p><small>copyright 2026 design mindset. best viewed in Internet Explorer 6 at 800x600</small></p>
+<p><font color="red" size="1">under construction</font> 🚧🚧🚧</p>
 
 </body>
 </html>
